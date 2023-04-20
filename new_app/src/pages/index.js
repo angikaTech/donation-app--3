@@ -9,6 +9,7 @@ import Footer1 from '@/copmonent/website/footer1'
 
 export default function Home() {
   return (
+
     <>
       <Head>
         <title>Create Next App</title>

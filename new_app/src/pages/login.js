@@ -6,11 +6,55 @@ import Head from 'next/head'
 // import Footer from '@/copmonent/user/footer'
 // import Rightsidbar from '@/copmonent/user/right-sidebar'
 // import Skin from '@/copmonent/user/skin'
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '@/features/auth/authSlice';
+import { useEffect } from 'react';
+import { useRouter } from "next/router";
 
 
 // const inter = Inter({ subsets: ['latin'] })
 
 export default function Login() {
+
+
+    const dispach = useDispatch();
+    const router = useRouter();
+
+    let schema = Yup.object().shape({
+
+        email: Yup.string().email("Email should be valid").required("Email is required"),
+        password: Yup.string().required("Password is required"),
+
+    });
+
+    const formik = useFormik({
+        initialValues: {
+            email: '',
+            password: '',
+        },
+        validationSchema: schema,
+        onSubmit: (values) => {
+            dispach(login(values))
+            alert(JSON.stringify(values, null, 2));
+
+        },
+    });
+    const { user, isLoading, isError, isSuccess, message } = useSelector(
+        (state) => state.auth
+    );
+    useEffect(() => {
+        if (isSuccess) {
+            router.push('/profile')
+        } else {
+            router.push('')
+        }
+
+    }, [user, isLoading, isError, isSuccess, message]
+    );
+
+
     return (
         <>
             <Head>
@@ -31,29 +75,59 @@ export default function Login() {
                                         </div>
                                         <h4>Hello! let's get started</h4>
                                         <h6 className="font-weight-light">Sign in to continue.</h6>
-                                        <form className="pt-3">
+                                        <form onSubmit={formik.handleSubmit} className="pt-3">
                                             <div className="form-group">
-                                                <input type="email" className="form-control form-control-lg" id="exampleInputEmail1" placeholder="Username" />
+                                                <input
+                                                    type="email"
+                                                    className="form-control form-control-lg"
+                                                    id="email"
+                                                    placeholder="Username"
+                                                    onChange={formik.handleChange("email")}
+                                                    value={formik.values.email}
+                                                />
+                                                <div className='error'>
+                                                    {formik.touched.email && formik.errors.email ? (
+                                                        <div>{formik.errors.email}</div>
+                                                    ) : null}
+                                                </div>
+
                                             </div>
                                             <div className="form-group">
-                                                <input type="password" className="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password" />
+                                                <input type="password"
+                                                    className="form-control form-control-lg"
+                                                    id="password"
+                                                    placeholder=" Password "
+                                                    onChange={formik.handleChange}
+                                                    value={formik.values.password}
+                                                />
+                                                <div className='error'>
+                                                    {formik.touched.password && formik.errors.password ? (
+                                                        <div>{formik.errors.password}</div>
+                                                    ) : null}
+                                                </div>
+
                                             </div>
+
                                             <div className="mt-3">
-                                                <a className="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" href="../../index.html">SIGN IN</a>
+                                                <button type="submit" className="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">SIGN IN</button>
                                             </div>
                                             <div className="my-2 d-flex justify-content-between align-items-center">
                                                 <div className="form-check">
                                                     <label className="form-check-label text-muted">
-                                                        <input type="checkbox" className="form-check-input" />
+                                                        <input
+                                                            type="checkbox"
+                                                            className="form-check-input"
+                                                        />
+
                                                         Keep me signed in
                                                     </label>
                                                 </div>
                                                 <a href="#" className="auth-link text-black">Forgot password?</a>
                                             </div>
                                             <div className="mb-2">
-                                                <button type="button" className="btn btn-block btn-facebook auth-form-btn">
+                                                {/* <button type="button" className="btn btn-block btn-facebook auth-form-btn">
                                                     <i className="ti-facebook mr-2"></i>Connect using facebook
-                                                </button>
+                                                </button> */}
                                             </div>
                                             <div className="text-center mt-4 font-weight-light">
                                                 Don't have an account? <a href="register.html" className="text-primary">Create</a>

@@ -49071,3 +49071,8 @@ div.tagsinput span.tag a {
 .header-dark .hero .embed-responsive iframe {
   /* background-color: #666; */
 }
+
+.error{
+  color:red;
+  font-size:12px;
+}

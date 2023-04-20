@@ -7,8 +7,9 @@ const authRouter = require('./routes/authRoute');
 const bodyParser = require('body-parser');
 const { notFound, errorHandler } = require('./middlewares/errorHandler');
 const cookieParser = require('cookie-parser');
-
+const cors = require('cors')
 // db connection
+app.use(cors())
 dbConnect();
 
 app.use(bodyParser.json());

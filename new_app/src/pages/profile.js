@@ -71,7 +71,7 @@ export default function Profile() {
                                                     <div className="card-body">
                                                         <h3 className="mb-4">Persnal details</h3>
                                                         <p className="mb-2"><b>Organization  : </b>xyzOrganization</p>
-                                                        <p className="mb-2"><b>Name : </b>Abcdef</p>
+                                                        <p className="mb-2"><b>Name : </b></p>
                                                         <p className="mb-2"><b>Email : </b>Abcdef@gmail.com</p>
                                                         <p className="mb-2"><b>Mobile  : </b>8943434532</p>
                                                         <p className="mb-2"><b>Address  : </b>Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</p>

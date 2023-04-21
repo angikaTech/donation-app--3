@@ -1,26 +1,46 @@
 
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import authService from "./authService";
-
-const userDefaultstate = {
-    _id: null,
-    name: null,
-    email: null,
-    mobile: null,
-    token: null,
-};
+import { useEffect } from "react";
 
 
 
-// const getUserfromLocalStorage = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : null;
+// const userDefaultstate = {
+//     _id: null,
+//     name: null,
+//     email: null,
+//     mobile: null,
+//     token: null,
+// };
+
+//
+
+// useEffect(() => {
+//     const getUserfromLocalStorage = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : null;
+//     alert(getUserfromLocalStorage)
+// }, []);
+
+// const getUserfromLocalStorage =
+//     typeof window !== 'undefined' ? (localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : null) : null;
+let getUserfromLocalStorage;
+if (typeof window !== 'undefined') {
+    getUserfromLocalStorage = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : null;
+    // getUserfromLocalStorage = localStorage.getItem("user");
+}
 
 
+
+
+
+// const getUserfromLocalStorage =
+//     localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : null;
 const initialState = {
-    user: userDefaultstate,
+    user: getUserfromLocalStorage,
     isError: false,
     isLoading: false,
     isSuccess: false,
     message: "",
+
 };
 
 export const login = createAsyncThunk('auth/login', async (user, thunkAPI) => {
@@ -55,5 +75,4 @@ export const authSlice = createSlice({
             });
     },
 });
-
 export default authSlice.reducer;

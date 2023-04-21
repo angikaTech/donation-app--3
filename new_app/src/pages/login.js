@@ -37,7 +37,7 @@ export default function Login() {
         validationSchema: schema,
         onSubmit: (values) => {
             dispach(login(values))
-            alert(JSON.stringify(values, null, 2));
+            // alert(JSON.stringify(values, null, 2));
 
         },
     });
@@ -45,8 +45,10 @@ export default function Login() {
         (state) => state.auth
     );
     useEffect(() => {
-        if (isSuccess) {
+        if (user || isSuccess) {
+
             router.push('/profile')
+
         } else {
             router.push('')
         }
@@ -73,7 +75,9 @@ export default function Login() {
                                         <div className="brand-logo">
                                             <img src="../../images/logo.svg" alt="logo" />
                                         </div>
+
                                         <h4>Hello! let's get started</h4>
+
                                         <h6 className="font-weight-light">Sign in to continue.</h6>
                                         <form onSubmit={formik.handleSubmit} className="pt-3">
                                             <div className="form-group">
@@ -131,6 +135,9 @@ export default function Login() {
                                             </div>
                                             <div className="text-center mt-4 font-weight-light">
                                                 Don't have an account? <a href="register.html" className="text-primary">Create</a>
+                                            </div>
+                                            <div className='error'>
+                                                {/* {message.message === "rejected" ? "you are not an admin" : ""} */}
                                             </div>
                                         </form>
                                     </div>

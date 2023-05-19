@@ -6,11 +6,21 @@ import Sidebar from '@/copmonent/super_admin/sidebar'
 import Footer from '@/copmonent/user/footer'
 
 import Skin from '@/copmonent/user/skin'
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import { getUsers } from '../features/customers/customerSlice'
 
 
 // const inter = Inter({ subsets: ['latin'] })
 
 export default function SuperAdminList() {
+
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(getUsers());
+    }, []);
+    const customerstate = useSelector((state) => state.customer.customers);
+
     return (
         <>
             <Head>
@@ -34,49 +44,31 @@ export default function SuperAdminList() {
                                     <div className="col-md-12 grid-margin stretch-card">
                                         <div className="card">
                                             <div className="card-body">
-                                                <p className="card-title ">Transections</p>
+                                                <p className="card-title ">Transections </p>
                                                 <div className="table-responsive">
                                                     <table className="table  display expandable-table">
+
                                                         <thead>
                                                             <tr>
                                                                 <th>S.no</th>
                                                                 <th>Name</th>
                                                                 <th>Mobile no.</th>
-                                                                <th>Amount</th>
-                                                                <th>Mode of payment</th>
-                                                                <th>Date</th>
-                                                                <th>Status</th>
+                                                                <th>Profile</th>
                                                             </tr>
                                                         </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>1.</td>
-                                                                <td >xyzab </td>
-                                                                <td>9879278397823</td>
-                                                                <td className="font-weight-bold">₹362</td>
-                                                                <td >online</td>
-                                                                <td>21 Sep 2018</td>
-                                                                <td className="font-weight-medium"><div className="badge badge-success">Profile</div></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>2.</td>
-                                                                <td>xyzabc</td>
-                                                                <td>9879278397823</td>
-                                                                <td className="font-weight-bold">$523</td>
-                                                                <td>online</td>
-                                                                <td>30 Jun 2018</td>
-                                                                <td className="font-weight-medium"><div className="badge badge-success">Profile</div></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>3.</td>
-                                                                <td>xyzabc</td>
-                                                                <td>9879278397823</td>
-                                                                <td className="font-weight-bold">$781</td>
-                                                                <td>online</td>
-                                                                <td>01 Nov 2018</td>
-                                                                <td className="font-weight-medium"><div className="badge badge-success">Profile</div></td>
-                                                            </tr>
-                                                        </tbody>
+                                                        {customerstate.map((value, key) => {
+                                                            return (
+                                                                <tbody  >
+                                                                    <tr>
+                                                                        <td>{key + 1}</td>
+                                                                        <td >{value.name} </td>
+                                                                        <td>{value.mobile}</td>
+                                                                        <td className="font-weight-medium"><div className="badge badge-success">Profile</div></td>
+                                                                    </tr>
+
+                                                                </tbody>
+                                                            )
+                                                        })}
                                                     </table>
                                                 </div>
                                             </div>
@@ -94,7 +86,7 @@ export default function SuperAdminList() {
                     </div>
                 </div>
 
-            </main>
+            </main >
         </>
     )
 }

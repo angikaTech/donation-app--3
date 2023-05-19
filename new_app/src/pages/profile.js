@@ -7,10 +7,25 @@ import Footer from '@/copmonent/user/footer'
 import Rightsidbar from '@/copmonent/user/right-sidebar'
 import Skin from '@/copmonent/user/skin'
 
-
-// const inter = Inter({ subsets: ['latin'] })
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import { getProfile } from '../features/profile/profileSlice'
 
 export default function Profile() {
+
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(getProfile());
+    }, []);
+
+
+    // const profilestate = useSelector((state) => state.auth.user);
+    // console.log(profilestate.name);
+    const profilestate = useSelector((state) => state.profile.profile);
+    console.log(profilestate.mobile);
+
+
+
     return (
         <>
             <Head>
@@ -32,7 +47,7 @@ export default function Profile() {
                                     <div className="col-md-12 grid-margin">
                                         <div className="row">
                                             <div className="col-12 col-xl-8 mb-4 mb-xl-0">
-                                                <h3 className="font-weight-bold">Welcome Aamir</h3>
+                                                <h3 className="font-weight-bold">Welcome {profilestate.name}</h3>
                                                 <h6 className="font-weight-normal mb-0">All systems are running smoothly! You have <span className="text-primary">3 unread alerts!</span></h6>
                                             </div>
                                             <div className="col-12 col-xl-4">
@@ -70,11 +85,11 @@ export default function Profile() {
                                                 <div className="card card-tale">
                                                     <div className="card-body">
                                                         <h3 className="mb-4">Persnal details</h3>
-                                                        <p className="mb-2"><b>Organization  : </b>xyzOrganization</p>
-                                                        <p className="mb-2"><b>Name : </b></p>
-                                                        <p className="mb-2"><b>Email : </b>Abcdef@gmail.com</p>
-                                                        <p className="mb-2"><b>Mobile  : </b>8943434532</p>
-                                                        <p className="mb-2"><b>Address  : </b>Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</p>
+                                                        <p className="mb-2"><b>Organization  : </b>{profilestate.organization}</p>
+                                                        <p className="mb-2"><b>Name : </b>{profilestate.name}</p>
+                                                        <p className="mb-2"><b>Email : </b>{profilestate.email}</p>
+                                                        <p className="mb-2"><b>Mobile  : </b>{profilestate.mobile}</p>
+                                                        <p className="mb-2"><b>Address  : </b>{profilestate.address}</p>
                                                     </div>
                                                 </div>
                                             </div>

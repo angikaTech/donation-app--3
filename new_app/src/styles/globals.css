@@ -48898,7 +48898,8 @@ div.tagsinput span.tag a {
 
 /* home page */
 .header-dark {
-  background:url(https://images.unsplash.com/photo-1594708767771-a7502209ff51?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fHBvdmVydHl8ZW58MHx8MHx8&w=1000&q=80) #444;
+  background: url(https://bodhitreefoundation.org.in/wp-content/uploads/2019/03/Make-a-Donation-Charity-Donate-140880731.jpg)
+    #444;
   background-size: cover;
   padding-bottom: 80px;
   background-color: rgb(120 120 120 / 0.9%);
@@ -49072,7 +49073,7 @@ div.tagsinput span.tag a {
   /* background-color: #666; */
 }
 
-.error{
-  color:red;
-  font-size:12px;
+.error {
+  color: red;
+  font-size: 12px;
 }

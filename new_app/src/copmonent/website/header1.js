@@ -1,4 +1,21 @@
+"use client"
+import { login } from "@/features/auth/authSlice";
+
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 export default function Header1() {
+
+    const dispatch = useDispatch();
+
+    // useEffect(() => {
+    //     dispatch(login());
+
+    // }, []);
+
+
+    const authstate = useSelector((state) => state.auth);
+    // console.log(authstate.user.mobile);
     return (
         <>
 
@@ -18,17 +35,22 @@ export default function Header1() {
                             </li> */}
                         </ul>
                         <form class="form-inline mr-auto" target="_self">
-                            <div class="form-group">
-                                <label for="search-field"><i class="fa fa-search"></i></label>
-                                {/* <input class="form-control search-field" type="search" name="search" id="search-field" /> */}
-                            </div>
-                        </form>
+                            {/* <div class="form-group">
+                                <label for="search-field"><i className="fa fa-search"></i></label>
 
-                        <span class="navbar-text"><a href="super_admin" class="login">Log In</a></span>
-                        <a class="btn btn-light action-button" role="button" href="signup">Sign Up</a>
+                            </div> */}
+                        </form>
+                        {authstate.user ? <> <div>Welcome {authstate.user.name} <a href="/profile" style={{ marginLeft: "20px", textDecoration: "none", color: "white" }}>Profile</a> </div> </> : <div><span class="navbar-text"><a href="login" class="login">Log In
+
+                        </a></span>
+                            <a class="btn btn-light action-button" role="button" href="signup">Sign Up</a> </div>}
+                        {/* <span class="navbar-text"><a href="login" class="login">Log In
+                           
+                        </a></span>
+                        <a class="btn btn-light action-button" role="button" href="signup">Sign Up</a> */}
                     </div>
                 </div>
-            </nav>
+            </nav >
 
         </>
 

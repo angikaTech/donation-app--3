@@ -6,10 +6,13 @@ const login = async (userData) => {
     const response = await axios.post(`${base_url}user/login`, userData);
     if (typeof window !== 'undefined' || response.data) {
         localStorage.setItem("user", JSON.stringify(response.data));
+        localStorage.setItem("id", JSON.stringify(response.data._id));
 
     }
     return response.data;
 };
+
+
 
 const authService = {
     login,

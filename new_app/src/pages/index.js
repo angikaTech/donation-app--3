@@ -1,3 +1,4 @@
+"use client"
 import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
@@ -5,9 +6,10 @@ import Header1 from '@/copmonent/website/header1'
 import Footer1 from '@/copmonent/website/footer1'
 
 
-// const inter = Inter({ subsets: ['latin'] })
+
 
 export default function Home() {
+
   return (
 
     <>
@@ -25,7 +27,7 @@ export default function Home() {
             <div class="container hero" style={{ height: "100mv" }}>
               <div class="row" >
                 <div class="col-md-8 offset-md-2">
-                  <h1 class="text-center">The Revolution is Here.</h1>
+                  {/* <h1 class="text-center">The Revolution is Here.</h1> */}
                   <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item"></iframe></div>
                 </div>
               </div>

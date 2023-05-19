@@ -37,23 +37,30 @@ export default function Login() {
         validationSchema: schema,
         onSubmit: (values) => {
             dispach(login(values))
-            // alert(JSON.stringify(values, null, 2));
+
+            alert(message)
+
+            // alert(JSON.stringify(message, null, 2));
 
         },
     });
+
     const { user, isLoading, isError, isSuccess, message } = useSelector(
         (state) => state.auth
     );
+
     useEffect(() => {
         if (user || isSuccess) {
 
-            router.push('/profile')
+            router.push('/')
+
 
         } else {
             router.push('')
+
         }
 
-    }, [user, isLoading, isError, isSuccess, message]
+    }, [user, isLoading, isError, isSuccess]
     );
 
 

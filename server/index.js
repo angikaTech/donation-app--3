@@ -18,7 +18,7 @@ app.use(cookieParser());
 // router 
 app.use("/api/user", authRouter);
 app.use("/", (req, res) => {
-    res.send("Are you lost")
+    res.send("Not Found ! You are lost")
 });
 
 app.use(notFound);

@@ -9,12 +9,22 @@ var userSchema = new mongoose.Schema(
             required: true,
 
         },
+        organization: {
+            type: String,
+            required: true,
+
+        },
         email: {
             type: String,
             required: true,
             unique: true,
         },
         mobile: {
+            type: String,
+            required: true,
+            unique: true,
+        },
+        address: {
             type: String,
             required: true,
             unique: true,
@@ -31,9 +41,14 @@ var userSchema = new mongoose.Schema(
             type: Boolean,
             default: false
         },
+        isSubscribed: {
+            type: Boolean,
+            default: false
+        },
         refreshToken: {
             type: String,
         },
+        payees: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Payee' }],
 
     },
     {

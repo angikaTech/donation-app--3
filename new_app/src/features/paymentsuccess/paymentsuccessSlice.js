@@ -1,44 +1,55 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import profileService from "./profileService";
+// import paymenttableService from "./paymentsuccessService";
+import successfullService from "./paymentsuccessService";
 
-export const getProfile = createAsyncThunk(
-    "profile/get-profile",
+
+
+export const successfullPayee = createAsyncThunk(
+    "successfull/get-paymentsuccess",
     async (thunkAPI) => {
         try {
-            return await profileService.getProfile();
+            return await successfullService.successfullPayee();
+
+
         } catch (error) {
             return thunkAPI.rejectWithValue(error);
         }
     }
 );
+
 const initialState = {
-    profile: [],
+    successfullPaymet: [],
     isError: false,
     isLoading: false,
     isSuccess: false,
     message: "",
 };
-export const profileSlice = createSlice({
-    name: "profile",
+
+export const successfullSlice = createSlice({
+    name: 'successfullPaymet',
     initialState,
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(getProfile.pending, (state) => {
+            .addCase(successfullPayee.pending, (state) => {
                 state.isLoading = true;
+                state.isError = false;
             })
-            .addCase(getProfile.fulfilled, (state, action) => {
+            .addCase(successfullPayee.fulfilled, (state, action) => {
                 state.isLoading = false;
                 state.isError = false;
                 state.isSuccess = true;
-                state.profile = action.payload;
+                state.successfullPaymet = action.payload;
+
             })
-            .addCase(getProfile.rejected, (state, action) => {
+            .addCase(successfullPayee.rejected, (state) => {
                 state.isLoading = false;
                 state.isError = true;
                 state.isSuccess = false;
-                state.message = action.payload.message;
+
             });
+
     },
 });
-export default profileSlice.reducer;
+
+export default successfullSlice.reducer;

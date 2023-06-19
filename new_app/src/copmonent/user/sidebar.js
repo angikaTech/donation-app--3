@@ -10,7 +10,7 @@ export default function sidebar() {
                     </a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" data-toggle="collapse" href="List of donation" aria-expanded="false" aria-controls="ui-basic">
+                    <a className="nav-link" href="donations-received" >
                         <i className="icon-layout menu-icon"></i>
                         <span className="menu-title"> Donations Received
                         </span>
@@ -23,6 +23,7 @@ export default function sidebar() {
                         <i className="icon-columns menu-icon"></i>
                         <span className="menu-title">Payments</span>
                     </a>
+
 
                 </li>
                 <li className="nav-item">

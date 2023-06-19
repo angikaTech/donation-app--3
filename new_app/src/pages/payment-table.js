@@ -6,11 +6,30 @@ import Sidebar from '@/copmonent/user/sidebar'
 import Footer from '@/copmonent/user/footer'
 import Rightsidbar from '@/copmonent/user/right-sidebar'
 import Skin from '@/copmonent/user/skin'
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import { getPayee } from '@/features/paymenttable/paymenttableSlice'
+
+
+
 
 
 // const inter = Inter({ subsets: ['latin'] })
 
 export default function PaymentTable() {
+
+
+
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(getPayee());
+
+    }, []);
+
+    const paymentstate = useSelector((state) => state.paymenttable.paymenttable
+    );
+
+    // console.log(paymentstate.length)
     return (
         <>
             <Head>
@@ -22,6 +41,7 @@ export default function PaymentTable() {
             <main>
                 <div className="container-scroller">
                     <Header />
+
                     <div className="container-fluid page-body-wrapper">
                         <Skin />
                         <Rightsidbar />
@@ -34,14 +54,15 @@ export default function PaymentTable() {
                                     <div className="col-md-12 grid-margin stretch-card">
                                         <div className="card">
                                             <div className="card-body">
-                                                <p className="card-title ">Transections</p>
+                                                <p className="card-title ">All Transections</p>
+
                                                 <div className="table-responsive">
                                                     <table className="table  display expandable-table">
                                                         <thead>
                                                             <tr>
                                                                 <th>S.no</th>
                                                                 <th>Name</th>
-                                                                <th>Transection no.</th>
+                                                                {/* <th>Transection no.</th> */}
                                                                 <th>Amount</th>
                                                                 <th>Mode of payment</th>
                                                                 <th>Date</th>
@@ -49,33 +70,36 @@ export default function PaymentTable() {
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr>
-                                                                <td>1.</td>
-                                                                <td >xyzab </td>
-                                                                <td>9879278397823</td>
-                                                                <td className="font-weight-bold">₹362</td>
-                                                                <td >online</td>
-                                                                <td>21 Sep 2018</td>
-                                                                <td className="font-weight-medium"><div className="badge badge-success">Completed</div></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>2.</td>
-                                                                <td>xyzabc</td>
-                                                                <td>9879278397823</td>
-                                                                <td className="font-weight-bold">$523</td>
-                                                                <td>online</td>
-                                                                <td>30 Jun 2018</td>
-                                                                <td className="font-weight-medium"><div className="badge badge-warning">Pending</div></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>3.</td>
-                                                                <td>xyzabc</td>
-                                                                <td>9879278397823</td>
-                                                                <td className="font-weight-bold">$781</td>
-                                                                <td>online</td>
-                                                                <td>01 Nov 2018</td>
-                                                                <td className="font-weight-medium"><div className="badge badge-danger">Cancelled</div></td>
-                                                            </tr>
+                                                            {paymentstate.map((value, key) => {
+
+                                                                return (
+
+                                                                    <tr key={key}>
+                                                                        <td>{key + 1}</td>
+                                                                        <td >{value.name}</td>
+                                                                        {/* <td>9879278397823</td> */}
+                                                                        <td className="font-weight-bold">₹{value.amount}</td>
+                                                                        <td >{value.payment_mode}</td>
+                                                                        <td>{value.createdAt}</td>
+                                                                        {/* {value.payment_status === "pending" ?
+
+                                                                            < td className="font-weight-medium"><div className="badge badge-warning"
+                                                                            >{value.payment_status}</div></td> : < td className="font-weight-medium"><div className="badge badge-success"
+                                                                            >{value.payment_status}</div></td>} */}
+                                                                        {value.payment_status === "pending" ?
+                                                                            < td className="font-weight-medium"><div className="badge badge-warning">{value.payment_status}</div></td>
+                                                                            : value.payment_status === "success" ?
+                                                                                < td className="font-weight-medium"><div className="badge badge-success" >{value.payment_status}</div></td>
+                                                                                : value.payment_status === "cancelled" ?
+                                                                                    < td className="font-weight-medium"><div className="badge badge-danger" > {value.payment_status}</div></td>
+                                                                                    : < td className="font-weight-medium"><div className="badge " > No data</div></td>
+
+                                                                        }
+                                                                    </tr>
+
+
+                                                                )
+                                                            })}
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -84,7 +108,24 @@ export default function PaymentTable() {
                                     </div>
 
                                 </div>
-
+                                {/* <tr>
+                                                                        <td>2.</td>
+                                                                        <td>xyzabc</td>
+                                                                       
+                                                                        <td className="font-weight-bold">$523</td>
+                                                                        <td>online</td>
+                                                                        <td>30 Jun 2018</td>
+                                                                        <td className="font-weight-medium"><div className="badge badge-warning">Pending</div></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>3.</td>
+                                                                        <td>xyzabc</td>
+                                                                        
+                                                                        <td className="font-weight-bold">$781</td>
+                                                                        <td>online</td>
+                                                                        <td>01 Nov 2018</td>
+                                                                        <td className="font-weight-medium"><div className="badge badge-danger">Cancelled</div></td>
+                                                                    </tr> */}
 
                             </div>
                             <Footer />
@@ -92,9 +133,9 @@ export default function PaymentTable() {
 
                         </div>
                     </div>
-                </div>
+                </div >
 
-            </main>
+            </main >
         </>
     )
 }

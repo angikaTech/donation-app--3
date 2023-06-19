@@ -4,11 +4,28 @@ import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import Header1 from '@/copmonent/website/header1'
 import Footer1 from '@/copmonent/website/footer1'
+import { base_url } from '@/utils/base_url'
+import axios from 'axios'
+import { useRouter } from 'next/router'
+// import Logout from '@/copmonent/logout'
 
 
 
 
 export default function Home() {
+  const router = useRouter();
+  const handleClick = () => {
+
+    localStorage.clear();
+    router.push("login")
+    // router.reload()
+
+
+    return;
+
+
+
+  }
 
   return (
 
@@ -24,6 +41,7 @@ export default function Home() {
           {/* slider start */}
           <div class="header-dark">
             <Header1 />
+
             <div class="container hero" style={{ height: "100mv" }}>
               <div class="row" >
                 <div class="col-md-8 offset-md-2">
@@ -34,8 +52,6 @@ export default function Home() {
             </div>
           </div>
           {/* slider end */}
-
-
           <div className="content-wrapper ">
             <div className="row">
               <div className='container'>
@@ -43,13 +59,13 @@ export default function Home() {
               </div>
             </div>
           </div>
-
-
-
-
         </div>
+        <button
+          onClick={handleClick}>Logout</button>
+
+        <Footer1 />
       </main>
-      <Footer1 />
+
     </>
   )
 }

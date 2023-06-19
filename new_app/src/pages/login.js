@@ -13,6 +13,14 @@ import { login } from '@/features/auth/authSlice';
 import { useEffect } from 'react';
 import { useRouter } from "next/router";
 
+import { ToastContainer, toast } from 'react-toastify';
+
+// Import toastify css file
+import 'react-toastify/dist/ReactToastify.css';
+
+// toast-configuration method,
+// it is compulsory method.
+// toast.configure()
 
 // const inter = Inter({ subsets: ['latin'] })
 
@@ -38,26 +46,34 @@ export default function Login() {
         onSubmit: (values) => {
             dispach(login(values))
 
-            alert(message)
+
 
             // alert(JSON.stringify(message, null, 2));
 
         },
+
     });
+
 
     const { user, isLoading, isError, isSuccess, message } = useSelector(
         (state) => state.auth
     );
 
     useEffect(() => {
+        if (isError === true) {
+            toast.error(message)
+        } else if (isSuccess === true) {
+            toast.success("Wellcome")
+        }
+    }, [isError, isSuccess])
+
+
+
+    useEffect(() => {
         if (user || isSuccess) {
-
             router.push('/')
-
-
         } else {
-            router.push('')
-
+            router.push('#')
         }
 
     }, [user, isLoading, isError, isSuccess]
@@ -72,6 +88,18 @@ export default function Login() {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss={false}
+                draggable
+                pauseOnHover
+                theme="dark"
+            />
             <main>
                 <div className="container-scroller">
                     <div className="container-fluid page-body-wrapper full-page-wrapper">
@@ -82,6 +110,7 @@ export default function Login() {
                                         <div className="brand-logo">
                                             <img src="../../images/logo.svg" alt="logo" />
                                         </div>
+
 
                                         <h4>Hello! let's get started</h4>
 
@@ -96,6 +125,7 @@ export default function Login() {
                                                     onChange={formik.handleChange("email")}
                                                     value={formik.values.email}
                                                 />
+
                                                 <div className='error'>
                                                     {formik.touched.email && formik.errors.email ? (
                                                         <div>{formik.errors.email}</div>
@@ -123,7 +153,7 @@ export default function Login() {
                                                 <button type="submit" className="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">SIGN IN</button>
                                             </div>
                                             <div className="my-2 d-flex justify-content-between align-items-center">
-                                                <div className="form-check">
+                                                {/* <div className="form-check">
                                                     <label className="form-check-label text-muted">
                                                         <input
                                                             type="checkbox"
@@ -132,7 +162,7 @@ export default function Login() {
 
                                                         Keep me signed in
                                                     </label>
-                                                </div>
+                                                </div> */}
                                                 <a href="#" className="auth-link text-black">Forgot password?</a>
                                             </div>
                                             <div className="mb-2">
@@ -141,7 +171,7 @@ export default function Login() {
                                                 </button> */}
                                             </div>
                                             <div className="text-center mt-4 font-weight-light">
-                                                Don't have an account? <a href="register.html" className="text-primary">Create</a>
+                                                Don't have an account? <a href="signup" className="text-primary">Create</a>
                                             </div>
                                             <div className='error'>
                                                 {/* {message.message === "rejected" ? "you are not an admin" : ""} */}

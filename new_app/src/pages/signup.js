@@ -3,8 +3,13 @@ import { useFormik } from 'formik';
 import { useDispatch, useSelector } from "react-redux";
 import * as Yup from 'yup';
 import { register } from '../features/user/userSlice'
+import { useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import { useRouter } from "next/router";
 
 export default function Singup() {
+    const router = useRouter();
     const dispach = useDispatch();
     let schema = Yup.object().shape({
 
@@ -30,18 +35,31 @@ export default function Singup() {
 
         },
     });
-    // const { user, isLoading, isError, isSuccess, message } = useSelector(
-    //     (state) => state.auth
+    const { isLoading, isError, isSuccess, message } = useSelector(
+        (state) => state.register
 
-    // );
+    );
+
+    useEffect(() => {
+        if (isError === true) {
+            toast.error(message)
+        } else if (isSuccess === true) {
+            toast.success("User created successfuly ");
+        }
+    }, [isError, isSuccess]);
+
+
 
     return (<>
+        <ToastContainer />
         <div style={{ backgroundColor: "#210070" }}>
             <Header1 />
+
         </div>
 
         <main>
 
+            {/* <ToastContainer /> */}
             <div className="content-wrapper">
                 <div className="row">
                     <div className="col-md-3"></div>
@@ -89,6 +107,7 @@ export default function Singup() {
                                             value={formik.values.address}
                                         />
                                     </div>
+
                                     <div className="form-group">
                                         <label for="password">Password</label>
                                         <input type="password" className="form-control" id="password" placeholder="Password"

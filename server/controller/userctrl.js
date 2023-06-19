@@ -1,9 +1,25 @@
 const { generateToken } = require('../config/jwtToken');
 const User = require('../models/usermodel');
+const Payee = require('../models/payeemodel')
 const asyncHandler = require('express-async-handler');
 const validateMongoDbId = require('../utils/validateMongodbId');
 const { generateRefreshToken } = require("../config/refreshtoken");
 const jwt = require("jsonwebtoken");
+
+// const createPayee = asyncHandler(async (req, res) => {
+
+//     try {
+//         const newPayee = await Payee.create(req.body);
+//         res.json(newPayee);
+
+//     } catch (error) {
+//         throw new Error(error)
+//     }
+
+// });
+
+
+
 // create user
 const createUser = asyncHandler(async (req, res) => {
     const email = req.body.email;
@@ -13,7 +29,7 @@ const createUser = asyncHandler(async (req, res) => {
         const newUser = await User.create(req.body);
         res.json(newUser);
     } else {
-        throw new Error("User Already Axist")
+        throw new Error("User already exist")
     }
 });
 
@@ -44,6 +60,10 @@ const loginUserCtrl = asyncHandler(async (req, res) => {
             name: findUser?.name,
             email: findUser?.email,
             mobile: findUser?.mobile,
+            organization: findUser?.organization,
+            address: findUser?.address,
+            role: findUser?.role,
+            isBlocked: findUser?.isBlocked,
             token: generateToken(findUser?._id),
         });
     } else {
@@ -198,6 +218,9 @@ const unblockUser = asyncHandler(async (req, res) => {
     }
 });
 
+
+
+
 module.exports = {
     createUser,
     loginUserCtrl,
@@ -208,5 +231,6 @@ module.exports = {
     blockUser,
     unblockUser,
     logout,
-    handleRefreshToken
+    handleRefreshToken,
+
 };

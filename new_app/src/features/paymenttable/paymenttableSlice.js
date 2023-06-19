@@ -1,44 +1,53 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import profileService from "./profileService";
+import paymenttableService from "./paymenttableService";
 
-export const getProfile = createAsyncThunk(
-    "profile/get-profile",
+
+
+export const getPayee = createAsyncThunk(
+    "paymenttable/get-paymenttable",
     async (thunkAPI) => {
         try {
-            return await profileService.getProfile();
+            return await paymenttableService.getPayee();
+
         } catch (error) {
             return thunkAPI.rejectWithValue(error);
         }
     }
 );
+
 const initialState = {
-    profile: [],
+    paymenttable: [],
     isError: false,
     isLoading: false,
     isSuccess: false,
     message: "",
 };
-export const profileSlice = createSlice({
-    name: "profile",
+
+export const paymenttableSlice = createSlice({
+    name: 'paymenttable',
     initialState,
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(getProfile.pending, (state) => {
+            .addCase(getPayee.pending, (state) => {
                 state.isLoading = true;
+                state.isError = false;
             })
-            .addCase(getProfile.fulfilled, (state, action) => {
+            .addCase(getPayee.fulfilled, (state, action) => {
                 state.isLoading = false;
                 state.isError = false;
                 state.isSuccess = true;
-                state.profile = action.payload;
+                state.paymenttable = action.payload;
+
             })
-            .addCase(getProfile.rejected, (state, action) => {
+            .addCase(getPayee.rejected, (state) => {
                 state.isLoading = false;
                 state.isError = true;
                 state.isSuccess = false;
-                state.message = action.payload.message;
+
             });
+
     },
 });
-export default profileSlice.reducer;
+
+export default paymenttableSlice.reducer;

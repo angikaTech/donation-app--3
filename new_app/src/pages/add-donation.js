@@ -6,11 +6,67 @@ import Sidebar from '@/copmonent/user/sidebar'
 import Footer from '@/copmonent/user/footer'
 import Rightsidbar from '@/copmonent/user/right-sidebar'
 import Skin from '@/copmonent/user/skin'
+import { useFormik } from 'formik'
+
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+import { createPayee } from '@/features/payee/payeeSlice'
+import { useRouter } from 'next/router'
 
 
 // const inter = Inter({ subsets: ['latin'] })
 
 export default function AddDonation() {
+    const dispach = useDispatch();
+    const route = useRouter();
+
+
+    // let schema = Yup.object().shape({
+
+    //     email: Yup.string().email("Email should be valid").required("Email is required"),
+    //     password: Yup.string().required("Password is required"),
+
+    // });
+
+    const formik = useFormik({
+        initialValues: {
+            name: '',
+            amount: '',
+            mobile: '',
+            payment_mode: '',
+
+
+        },
+        // validationSchema: schema,
+        onSubmit: (values) => {
+
+            dispach(createPayee(values));
+        },
+
+    });
+
+
+    const { isLoading, isError, isSuccess, message } = useSelector(
+        (state) => state.payee
+    );
+
+    useEffect(() => {
+        if (isError === true) {
+            toast.error("Not submited")
+        } else if (isSuccess === true) {
+            toast.success("Donation added Successfully ")
+            route.push("/payment-table")
+
+        }
+    }, [isError, isSuccess])
+
+
+
+
+
+
     return (
         <>
             <Head>
@@ -20,6 +76,7 @@ export default function AddDonation() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <main>
+                <ToastContainer />
                 <div className="container-scroller">
                     <Header />
                     <div className="container-fluid page-body-wrapper">
@@ -28,40 +85,60 @@ export default function AddDonation() {
                         <Sidebar />
                         <div className="main-panel">
                             <div className="content-wrapper">
-                                <div class="row">
-                                    <div class="col-md-3"></div>
-                                    <div class="col-md-6 grid-margin stretch-card">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                {/* <h4 class="card-title">Donation form</h4>
-                                                <p class="card-description">
-                                                    Add payee's details
-                                                </p> */}
-                                                <form class="forms-sample">
-                                                    <div class="form-group">
+                                <div className="row">
+                                    <div className="col-md-3"></div>
+                                    <div className="col-md-6 grid-margin stretch-card">
+                                        <div className="card">
+                                            <div className="card-body">
+
+                                                <form onSubmit={formik.handleSubmit} className="forms-sample">
+                                                    <div className="form-group">
                                                         <label for="name">Name</label>
-                                                        <input type="text" class="form-control" id="name" placeholder="Name" />
+                                                        <input type="text"
+                                                            className="form-control"
+                                                            id="name"
+                                                            placeholder="Name"
+                                                            onChange={formik.handleChange("name")}
+                                                            value={formik.values.name}
+                                                        />
                                                     </div>
-                                                    <div class="form-group">
-                                                        <label for="exampleInputEmail1">Email address</label>
-                                                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" />
-                                                    </div>
-                                                    <div class="form-group">
+
+                                                    <div className="form-group">
                                                         <label for="amount">Amount</label>
-                                                        <input type="text" class="form-control" id="amount" placeholder="Amount" />
+                                                        <input type="text"
+                                                            className="form-control"
+                                                            id="amount"
+                                                            placeholder="Amount"
+                                                            onChange={formik.handleChange("amount")}
+                                                            value={formik.values.amount}
+                                                        />
                                                     </div>
-                                                    <div class="form-group">
+                                                    <div className="form-group">
                                                         <label for="mobile-no">Mobile no.</label>
-                                                        <input type="tel" class="form-control" id="mobile-no" placeholder="Mobile number" />
+                                                        <input
+                                                            type="tel"
+                                                            className="form-control"
+                                                            id="mobile"
+                                                            placeholder="Mobile number"
+                                                            onChange={formik.handleChange("mobile")}
+                                                            value={formik.values.mobile}
+                                                        />
                                                     </div>
-                                                    <div class="form-group">
+                                                    <div className="form-group">
                                                         <label for="mode">Payment mode</label>
-                                                        <select name="mode" id="mode" class="form-control">
+                                                        <select
+                                                            name="payment_mode"
+                                                            id="payment_mode"
+                                                            className="form-control"
+                                                            onChange={formik.handleChange("payment_mode")}
+                                                            value={formik.values.payment_mode}
+                                                        >
                                                             <option value="Online">Online</option>
                                                             <option value="offline">Offline</option>
                                                         </select>
                                                     </div>
-                                                    <button type="submit" class="btn btn-primary mr-2">Add</button>
+
+                                                    <button type="submit" className="btn btn-primary mr-2">Add</button>
                                                 </form>
                                             </div>
                                         </div>

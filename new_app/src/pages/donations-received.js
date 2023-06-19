@@ -2,23 +2,28 @@ import Head from 'next/head'
 import Image from 'next/image'
 // import { Inter } from 'next/font/google'
 import Header from '@/copmonent/user/header'
-import Sidebar from '@/copmonent/super_admin/sidebar'
+import Sidebar from '@/copmonent/user/sidebar'
 import Footer from '@/copmonent/user/footer'
+import Rightsidbar from '@/copmonent/user/right-sidebar'
 import Skin from '@/copmonent/user/skin'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
-import { getUsers } from '../features/customers/customerSlice'
+import { successfullPayee } from '@/features/paymentsuccess/paymentsuccessSlice'
 
 
 // const inter = Inter({ subsets: ['latin'] })
 
-export default function SuperAdminList() {
-
+export default function DonationsReceived() {
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(getUsers());
+        dispatch(successfullPayee());
+
     }, []);
-    const customerstate = useSelector((state) => state.customer.customers);
+
+    const paymentstate = useSelector((state) => state.successpayment.successfullPaymet
+
+    );
+    console.log(paymentstate);
 
     return (
         <>
@@ -33,7 +38,7 @@ export default function SuperAdminList() {
                     <Header />
                     <div className="container-fluid page-body-wrapper">
                         <Skin />
-
+                        <Rightsidbar />
                         <Sidebar />
                         <div className="main-panel">
                             <div className="content-wrapper">
@@ -43,31 +48,37 @@ export default function SuperAdminList() {
                                     <div className="col-md-12 grid-margin stretch-card">
                                         <div className="card">
                                             <div className="card-body">
-                                                <p className="card-title ">Transections </p>
+                                                <p className="card-title ">Successful Transections</p>
                                                 <div className="table-responsive">
                                                     <table className="table  display expandable-table">
-
                                                         <thead>
                                                             <tr>
                                                                 <th>S.no</th>
                                                                 <th>Name</th>
-                                                                <th>Mobile no.</th>
-                                                                <th>Profile</th>
+                                                                {/* <th>Transection no.</th> */}
+                                                                <th>Amount</th>
+                                                                <th>Mode of payment</th>
+                                                                <th>Date</th>
+                                                                <th>Status</th>
                                                             </tr>
                                                         </thead>
-                                                        {customerstate.map((value, key) => {
+                                                        {paymentstate.map((value, key) => {
                                                             return (
-                                                                <tbody  >
+                                                                <tbody>
                                                                     <tr>
                                                                         <td>{key + 1}</td>
                                                                         <td >{value.name} </td>
-                                                                        <td>{value.mobile}</td>
-                                                                        <td className="font-weight-medium"><div className="badge badge-success">Profile</div></td>
+                                                                        {/* <td>9879278397823</td> */}
+                                                                        <td className="font-weight-bold">₹{value.amount}</td>
+                                                                        <td >{value.payment_mode}</td>
+                                                                        <td>{value.createdAt}</td>
+                                                                        <td className="font-weight-medium"><div className="badge badge-success">{value.payment_status}</div></td>
                                                                     </tr>
 
                                                                 </tbody>
                                                             )
                                                         })}
+
                                                     </table>
                                                 </div>
                                             </div>
@@ -85,7 +96,7 @@ export default function SuperAdminList() {
                     </div>
                 </div>
 
-            </main >
+            </main>
         </>
     )
 }

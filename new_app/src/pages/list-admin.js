@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 // import { Inter } from 'next/font/google'
-import Header from '@/copmonent/user/header'
+import Header from '@/copmonent/super_admin/header'
 import Sidebar from '@/copmonent/super_admin/sidebar'
 import Footer from '@/copmonent/user/footer'
 import Skin from '@/copmonent/user/skin'
@@ -17,9 +17,10 @@ export default function SuperAdminList() {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getUsers());
+
     }, []);
     const customerstate = useSelector((state) => state.customer.customers);
-
+    // console.log(customerstate[0].isSubscribed)
     return (
         <>
             <Head>
@@ -43,7 +44,7 @@ export default function SuperAdminList() {
                                     <div className="col-md-12 grid-margin stretch-card">
                                         <div className="card">
                                             <div className="card-body">
-                                                <p className="card-title ">Transections </p>
+                                                <p className="card-title ">Users </p>
                                                 <div className="table-responsive">
                                                     <table className="table  display expandable-table">
 
@@ -51,7 +52,10 @@ export default function SuperAdminList() {
                                                             <tr>
                                                                 <th>S.no</th>
                                                                 <th>Name</th>
+                                                                <th>Role</th>
                                                                 <th>Mobile no.</th>
+                                                                <th>Subscribed</th>
+                                                                <th>Blocked</th>
                                                                 <th>Profile</th>
                                                             </tr>
                                                         </thead>
@@ -61,7 +65,11 @@ export default function SuperAdminList() {
                                                                     <tr>
                                                                         <td>{key + 1}</td>
                                                                         <td >{value.name} </td>
+                                                                        <td >{value.role} </td>
                                                                         <td>{value.mobile}</td>
+
+                                                                        {value.isSubscribed == true ? <td>Subscribed</td> : <td>Not Subscribed</td>}
+                                                                        {value.isBlocked == true ? <td>Blocked</td> : <td>Unblocked</td>}
                                                                         <td className="font-weight-medium"><div className="badge badge-success">Profile</div></td>
                                                                     </tr>
 

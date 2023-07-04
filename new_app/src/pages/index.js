@@ -1,4 +1,5 @@
 "use client"
+
 import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
@@ -7,6 +8,9 @@ import Footer1 from '@/copmonent/website/footer1'
 import { base_url } from '@/utils/base_url'
 import axios from 'axios'
 import { useRouter } from 'next/router'
+import { useEffect } from 'react'
+import Logout from '@/copmonent/logout'
+import { config } from '@/utils/axiosconfig'
 // import Logout from '@/copmonent/logout'
 
 
@@ -14,18 +18,22 @@ import { useRouter } from 'next/router'
 
 export default function Home() {
   const router = useRouter();
-  const handleClick = () => {
+
+  const handleLogout = () => {
 
     localStorage.clear();
-    router.push("login")
-    // router.reload()
+    window.location.reload();
 
 
-    return;
+    //   const res = axios.get(`${base_url}user/logout`, config).then((Response) => {
 
+    //     router.push("/login")
+
+    // });
 
 
   }
+
 
   return (
 
@@ -37,21 +45,23 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main >
-        <div>
-          {/* slider start */}
-          <div class="header-dark">
-            <Header1 />
 
-            <div class="container hero" style={{ height: "100mv" }}>
-              <div class="row" >
-                <div class="col-md-8 offset-md-2">
-                  {/* <h1 class="text-center">The Revolution is Here.</h1> */}
-                  <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item"></iframe></div>
+        <div>
+
+          <div className="header-dark">
+
+            <Header1 />
+            <div className="container hero" style={{ height: "100mv" }}>
+
+              <div className="row" >
+                <div className="col-md-8 offset-md-2">
+
+                  <div className="embed-responsive embed-responsive-16by9"><iframe className="embed-responsive-item"></iframe></div>
                 </div>
               </div>
             </div>
           </div>
-          {/* slider end */}
+
           <div className="content-wrapper ">
             <div className="row">
               <div className='container'>
@@ -60,8 +70,12 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <button
-          onClick={handleClick}>Logout</button>
+        <div style={{ textAlign: "center", color: "red" }}>
+          <button style={{ textAlign: "center", color: "red", background: "green", borderColor: "white", padding: "10px", margin: "10px", borderRadius: "20px 2px 20px 2px", boxShadow: "rgba(0, 0, 0, 0.56) 0px 22px 70px 4px" }}
+            onClick={handleLogout}>Logout
+          </button>
+        </div>
+
 
         <Footer1 />
       </main>

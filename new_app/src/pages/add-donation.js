@@ -132,9 +132,12 @@ export default function AddDonation() {
                                                             className="form-control"
                                                             onChange={formik.handleChange("payment_mode")}
                                                             value={formik.values.payment_mode}
+                                                            required
                                                         >
+                                                            <option >Select</option>
+                                                            <option value="offline"  >Offline</option>
                                                             <option value="Online">Online</option>
-                                                            <option value="offline">Offline</option>
+
                                                         </select>
                                                     </div>
 

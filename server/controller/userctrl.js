@@ -52,6 +52,8 @@ const loginUserCtrl = asyncHandler(async (req, res) => {
         );
         res.cookie('refreshToken', refreshToken, {
             httpOnly: true,
+            Path: "/",
+            // secure: true,  
             maxAge: 72 * 60 * 60 * 1000,
 
         });
@@ -98,7 +100,7 @@ const logout = asyncHandler(async (req, res) => {
     if (!user) {
         res.clearCookie("refreshToken", {
             httpOnly: true,
-            secure: true,
+            // secure: true,
         });
         return res.sendStatus(204); // forbidden
     }

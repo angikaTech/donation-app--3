@@ -9,11 +9,20 @@ const { notFound, errorHandler } = require('./middlewares/errorHandler');
 const cookieParser = require('cookie-parser');
 const cors = require('cors')
 // db connection
-app.use(cors())
+
+
+// app.use(cors())
+app.use("*", cors({
+    origin: true,
+    credentials: true,
+}));
+
+
+
 dbConnect();
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 // router 
 app.use("/api/user", authRouter);

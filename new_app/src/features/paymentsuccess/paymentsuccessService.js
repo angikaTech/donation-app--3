@@ -1,3 +1,4 @@
+import { config } from "@/utils/axiosconfig";
 import { base_url } from "@/utils/base_url";
 import axios from "axios";
 
@@ -8,7 +9,7 @@ if (typeof window !== 'undefined') {
 }
 
 const successfullPayee = async () => {
-    const response = await axios.get(`${base_url}user/successfullPayment/${id}`)
+    const response = await axios.get(`${base_url}user/successfullPayment/${id}`, config)
     return response.data;
 };
 

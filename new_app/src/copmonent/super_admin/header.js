@@ -1,4 +1,49 @@
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 export default function Header() {
+    const dispatch = useDispatch();
+
+
+    const router = useRouter();
+
+    const { user, isLoading, isError, isSuccess, message } = useSelector(
+        (state) => state.auth
+    );
+
+    // user = JSON.stringify
+    // useEffect(() => {
+    //     dispatch(getUsers());
+    // })
+    const admin = JSON.stringify(user);
+    // console.log(admin.role)
+    useEffect(() => {
+        if (user) {
+            if (user.role === "admin") {
+                router.push('')
+            } else {
+                router.push('login')
+            }
+
+        } else {
+            router.push('/')
+        }
+
+    }, [user, isLoading, isError, isSuccess]
+    );
+
+
+
+
+
+
+
+    const handleLogout = () => {
+
+        localStorage.clear();
+        window.location.reload();
+    }
     return (
 
         <nav className="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
@@ -15,10 +60,10 @@ export default function Header() {
                         <div className="input-group">
                             <div className="input-group-prepend hover-cursor" id="navbar-search-icon">
                                 <span className="input-group-text" id="search">
-                                    <i className="icon-search"></i>
+                                    {/* <i className="icon-search"></i> */}
                                 </span>
                             </div>
-                            <input type="text" className="form-control" id="navbar-search-input" placeholder="Search now" aria-label="search" aria-describedby="search" />
+                            {/* <input type="text" className="form-control" id="navbar-search-input" placeholder="Search now" aria-label="search" aria-describedby="search" /> */}
                         </div>
                     </li>
                 </ul>
@@ -37,13 +82,13 @@ export default function Header() {
                                     </div>
                                 </div>
                                 <div className="preview-item-content">
-                                    <h6 className="preview-subject font-weight-normal">Application Error</h6>
+                                    <h6 className="preview-subject font-weight-normal">No Notifications</h6>
                                     <p className="font-weight-light small-text mb-0 text-muted">
-                                        Just now
+                                        {/* Just now */}
                                     </p>
                                 </div>
                             </a>
-                            <a className="dropdown-item preview-item">
+                            {/* <a className="dropdown-item preview-item">
                                 <div className="preview-thumbnail">
                                     <div className="preview-icon bg-warning">
                                         <i className="ti-settings mx-0"></i>
@@ -68,7 +113,7 @@ export default function Header() {
                                         2 days ago
                                     </p>
                                 </div>
-                            </a>
+                            </a> */}
                         </div>
                     </li>
                     <li className="nav-item nav-profile dropdown">
@@ -76,11 +121,11 @@ export default function Header() {
                             <img src="images/faces/face28.jpg" alt="profile" />
                         </a>
                         <div className="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-                            <a className="dropdown-item">
+                            <a className="dropdown-item" href="settings">
                                 <i className="ti-settings text-primary"></i>
                                 Settings
                             </a>
-                            <a className="dropdown-item">
+                            <a onClick={handleLogout} className="dropdown-item">
                                 <i className="ti-power-off text-primary"></i>
                                 Logout
                             </a>

@@ -1,6 +1,7 @@
 
 import axios from "axios";
 import { base_url } from "@/utils/base_url";
+import { config } from "@/utils/axiosconfig";
 
 
 let id;
@@ -11,9 +12,7 @@ if (typeof window !== 'undefined') {
 
 const getProfile = async () => {
 
-    const response = await axios.get(`${base_url}user/${id}`)
-
-
+    const response = await axios.get(`${base_url}user/${id}`, config)
     return response.data;
 }
 

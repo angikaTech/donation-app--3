@@ -73,7 +73,7 @@ export default function Login() {
         if (user || isSuccess) {
             router.push('/')
         } else {
-            router.push('#')
+            router.push('')
         }
 
     }, [user, isLoading, isError, isSuccess]

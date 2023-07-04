@@ -37,7 +37,7 @@ export const profileSlice = createSlice({
                 state.isLoading = false;
                 state.isError = true;
                 state.isSuccess = false;
-                state.message = action.payload.message;
+                // state.message = action.payload.message;
             });
     },
 });

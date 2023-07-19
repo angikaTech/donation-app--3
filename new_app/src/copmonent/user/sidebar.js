@@ -9,7 +9,7 @@ export default function sidebar() {
                         <span className="menu-title">Home</span>
                     </a>
                 </li>
-                <li className="nav-item">
+                {/* <li className="nav-item">
                     <a className="nav-link" href="donations-received" >
                         <i className="icon-layout menu-icon"></i>
                         <span className="menu-title"> Donations Received
@@ -17,7 +17,7 @@ export default function sidebar() {
 
                     </a>
 
-                </li>
+                </li> */}
                 <li className="nav-item">
                     <a className="nav-link" href="payment-table">
                         <i className="icon-columns menu-icon"></i>

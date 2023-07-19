@@ -121,11 +121,11 @@ export default function Header() {
                             </a>
                         </div>
                     </li>
-                    <li className="nav-item nav-settings d-none d-lg-flex">
+                    {/* <li className="nav-item nav-settings d-none d-lg-flex">
                         <a className="nav-link" href="#">
                             <i className="icon-ellipsis"></i>
                         </a>
-                    </li>
+                    </li> */}
                 </ul>
                 <button className="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
                     <span className="icon-menu"></span>

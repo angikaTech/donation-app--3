@@ -8,6 +8,7 @@ import registerReducer from '../features/user/userSlice';
 import payeeReducer from "@/features/payee/payeeSlice";
 import paymenttableReducer from "@/features/paymenttable/paymenttableSlice";
 import successfullReducer from "@/features/paymentsuccess/paymentsuccessSlice";
+import totalamountReducer from "@/features/totalamount/totalamountSlice";
 
 
 
@@ -15,5 +16,8 @@ import successfullReducer from "@/features/paymentsuccess/paymentsuccessSlice";
 
 
 export const store = configureStore({
-    reducer: { auth: authReducer, customer: customerReducer, profile: profileReducer, register: registerReducer, payee: payeeReducer, paymenttable: paymenttableReducer, successpayment: successfullReducer },
+    reducer: {
+        auth: authReducer, customer: customerReducer, profile: profileReducer, register: registerReducer, payee: payeeReducer, paymenttable: paymenttableReducer, successpayment: successfullReducer,
+        totalamount: totalamountReducer,
+    },
 });

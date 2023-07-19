@@ -1,7 +1,7 @@
 const express = require("express");
 const { createUser, loginUserCtrl, getallUser, getaUser, deleteaUser, updatedUser, blockUser, unblockUser, handleRefreshToken, logout } = require("../controller/userctrl");
 const { authMiddleware, isAdmin } = require("../middlewares/authMiddleware");
-const { createPayee, getPayee, successfullPayment } = require("../controller/payeectrl");
+const { createPayee, getPayee, successfullPayment, totalAmount } = require("../controller/payeectrl");
 
 const router = express.Router();
 
@@ -21,6 +21,7 @@ router.get("/refresh", handleRefreshToken);
 router.post("/add-payee/:id", createPayee);
 router.get("/payee/:id", getPayee);
 router.get('/successfullPayment/:id', successfullPayment);
+router.get('/total-amount/:id', totalAmount);
 
 
 module.exports = router;

@@ -9,6 +9,7 @@ import Skin from '@/copmonent/user/skin'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { getPayee } from '@/features/paymenttable/paymenttableSlice'
+import moment from 'moment'
 
 
 
@@ -43,8 +44,8 @@ export default function PaymentTable() {
                     <Header />
 
                     <div className="container-fluid page-body-wrapper">
-                        <Skin />
-                        <Rightsidbar />
+                        {/* <Skin />
+                        <Rightsidbar /> */}
                         <Sidebar />
                         <div className="main-panel">
                             <div className="content-wrapper">
@@ -66,7 +67,7 @@ export default function PaymentTable() {
                                                                 <th>Amount</th>
                                                                 <th>Mode of payment</th>
                                                                 <th>Date</th>
-                                                                <th>Status</th>
+                                                                <th>Download receipt</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -80,13 +81,13 @@ export default function PaymentTable() {
                                                                         {/* <td>9879278397823</td> */}
                                                                         <td className="font-weight-bold">₹{value.amount}</td>
                                                                         <td >{value.payment_mode}</td>
-                                                                        <td>{value.createdAt}</td>
+                                                                        <td>{moment(value.createdAt).format('DD-MM-YYYY')}</td>
                                                                         {/* {value.payment_status === "pending" ?
 
                                                                             < td className="font-weight-medium"><div className="badge badge-warning"
                                                                             >{value.payment_status}</div></td> : < td className="font-weight-medium"><div className="badge badge-success"
                                                                             >{value.payment_status}</div></td>} */}
-                                                                        {value.payment_status === "pending" ?
+                                                                        {/* {value.payment_status === "pending" ?
                                                                             < td className="font-weight-medium"><div className="badge badge-warning">{value.payment_status}</div></td>
                                                                             : value.payment_status === "success" ?
                                                                                 < td className="font-weight-medium"><div className="badge badge-success" >{value.payment_status}</div></td>
@@ -94,7 +95,8 @@ export default function PaymentTable() {
                                                                                     < td className="font-weight-medium"><div className="badge badge-danger" > {value.payment_status}</div></td>
                                                                                     : < td className="font-weight-medium"><div className="badge " > No data</div></td>
 
-                                                                        }
+                                                                        } */}
+                                                                        < td className="font-weight-medium"><div className="badge badge-success">Download</div></td>
                                                                     </tr>
 
 

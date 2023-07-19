@@ -12,6 +12,9 @@ import { useEffect } from 'react'
 import { getProfile } from '../features/profile/profileSlice'
 import { ToastContainer, toast } from 'react-toastify'
 import { getPayee } from '@/features/paymenttable/paymenttableSlice'
+import { base_url } from '@/utils/base_url'
+import { totalamount1 } from '@/features/totalamount/totalamountSlice'
+import moment from 'moment/moment'
 
 export default function Profile() {
 
@@ -19,6 +22,7 @@ export default function Profile() {
     useEffect(() => {
         dispatch(getProfile());
         dispatch(getPayee());
+        dispatch(totalamount1());
 
     }, []);
 
@@ -27,12 +31,14 @@ export default function Profile() {
     // console.log(profilestate.name);
     const profilestate = useSelector((state) => state.profile.profile);
     const paymentstate = useSelector((state) => state.paymenttable.paymenttable);
+    const amount = useSelector((state) => state.totalamount.totalamount);
     // const authstate = useSelector((state) => state.auth);
 
 
 
 
     return (
+
         <>
             <main>
 
@@ -40,8 +46,8 @@ export default function Profile() {
                     <Header />
 
                     <div className="container-fluid page-body-wrapper">
-                        <Skin />
-                        <Rightsidbar />
+                        {/* <Skin />
+                        <Rightsidbar /> */}
                         <Sidebar />
                         <div className="main-panel">
                             <div className="content-wrapper">
@@ -50,7 +56,7 @@ export default function Profile() {
                                         <div className="row">
                                             <div className="col-12 col-xl-8 mb-4 mb-xl-0">
                                                 <h3 className="font-weight-bold">Welcome {profilestate.name}</h3>
-                                                <h6 className="font-weight-normal mb-0">All systems are running smoothly! You have <span className="text-primary">3 unread alerts!</span></h6>
+                                                <h6 className="font-weight-normal mb-0">All systems are running smoothly! You have <span className="text-primary">0 unread alerts!</span></h6>
                                             </div>
                                             {/* <div className="col-12 col-xl-4">
                                                 <div className="justify-content-end d-flex">
@@ -77,7 +83,9 @@ export default function Profile() {
                                     <div className="col-md-3 grid-margin ">
                                         <div  >
                                             <div className=" mt-auto" >
-                                                <img src="https://t4.ftcdn.net/jpg/05/11/55/91/360_F_511559113_UTxNAE1EP40z1qZ8hIzGNrB0LwqwjruK.jpg" alt="people"
+                                                {/* <img src="http://localhost:5000/api/images/logo.jpeg" alt="people" */}
+                                                <img src={base_url + "images/" + profilestate.document} alt="people"
+                                                    profilestate
                                                     style={{ borderRadius: "50%", height: "200px", width: "200px", overflow: "hidden", display: "flex", justifyContent: "center", alignItems: "center" }}
                                                 />
                                             </div>
@@ -104,7 +112,7 @@ export default function Profile() {
                                                 <div class="card card-light-blue">
                                                     <div class="card-body">
                                                         <p class="mb-4">Total Amount Recived </p>
-                                                        <p class="fs-30 mb-2 counter">0</p>
+                                                        <p class="fs-30 mb-2 counter">{amount}</p>
                                                         {/* <p>2.00% (30 days)</p> */}
                                                     </div>
                                                 </div>
@@ -137,7 +145,7 @@ export default function Profile() {
                                                                 <th>Amount</th>
                                                                 <th>Mode of payment</th>
                                                                 <th>Date</th>
-                                                                <th>Status</th>
+                                                                <th>Download receipt</th>
                                                             </tr>
                                                         </thead>
                                                         {paymentstate.slice(0, 3).map((value, key) => {
@@ -147,13 +155,17 @@ export default function Profile() {
                                                                 <tbody>
                                                                     <tr key={key}>
                                                                         <td>{key + 1}</td>
-                                                                        <td >xyzab </td>
+                                                                        <td >{value.name}</td>
                                                                         {/* <td>9879278397823</td> */}
                                                                         <td className="font-weight-bold">₹{value.amount}</td>
                                                                         <td >{value.payment_mode}</td>
                                                                         {/* <td>21 Sep 2018</td> */}
-                                                                        <td>{value.createdAt}</td>
-                                                                        {value.payment_status === "pending" ?
+                                                                        <td>
+                                                                            {/* {value.createdAt} */}
+                                                                            {moment(value.createdAt).format('DD-MM-YYYY')}
+                                                                        </td>
+                                                                        < td className="font-weight-medium"><div className="badge badge-success">Download</div></td>
+                                                                        {/* {value.payment_status === "pending" ?
                                                                             < td className="font-weight-medium"><div className="badge badge-warning">{value.payment_status}</div></td>
                                                                             : value.payment_status === "success" ?
                                                                                 < td className="font-weight-medium"><div className="badge badge-success" >{value.payment_status}</div></td>
@@ -161,7 +173,7 @@ export default function Profile() {
                                                                                     < td className="font-weight-medium"><div className="badge badge-danger" > {value.payment_status}</div></td>
                                                                                     : < td className="font-weight-medium"><div className="badge " > No data</div></td>
 
-                                                                        }
+                                                                        } */}
                                                                     </tr>
                                                                     {/* <tr>
                                                                 <td>2.</td>

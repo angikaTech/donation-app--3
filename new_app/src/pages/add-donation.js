@@ -80,8 +80,8 @@ export default function AddDonation() {
                 <div className="container-scroller">
                     <Header />
                     <div className="container-fluid page-body-wrapper">
-                        <Skin />
-                        <Rightsidbar />
+                        {/* <Skin />
+                        <Rightsidbar /> */}
                         <Sidebar />
                         <div className="main-panel">
                             <div className="content-wrapper">

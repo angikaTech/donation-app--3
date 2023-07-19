@@ -48,7 +48,12 @@ var userSchema = new mongoose.Schema(
         refreshToken: {
             type: String,
         },
-        payees: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Payee' }],
+        payees: [{
+            type: mongoose.Schema.Types.ObjectId, ref: 'Payee'
+        }],
+        document: {
+            type: String,
+        },
 
     },
     {

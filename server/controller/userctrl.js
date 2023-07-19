@@ -26,7 +26,13 @@ const createUser = asyncHandler(async (req, res) => {
     const findUser = await User.findOne({ email: email });
     if (!findUser) {
         // create a new User
-        const newUser = await User.create(req.body);
+        let data = req.body;
+
+
+        data.document = "logo.jpeg";
+
+        console.log(data)
+        const newUser = await User.create(data);
         res.json(newUser);
     } else {
         throw new Error("User already exist")

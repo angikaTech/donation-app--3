@@ -10,14 +10,14 @@ export default function sidebar() {
                     </a>
                 </li> */}
                 <li className="nav-item">
-                    <a className="nav-link" href="super-admin">
+                    <a className="nav-link" href="/super-admin">
                         <i className="icon-grid menu-icon"></i>
                         <span className="menu-title">Home</span>
                     </a>
                 </li>
 
                 <li className="nav-item">
-                    <a className="nav-link" href="list-admin">
+                    <a className="nav-link" href="/list-admin">
                         <i className="icon-columns menu-icon"></i>
                         <span className="menu-title"> User list</span>
                     </a>
@@ -28,14 +28,14 @@ export default function sidebar() {
                         <span className="menu-title">Add Donation</span>
                     </a>
                 </li> */}
-                <li className="nav-item">
+                {/* <li className="nav-item">
                     <a className="nav-link" href="sdfsfd" >
                         <i className="icon-bar-graph menu-icon"></i>
                         <span className="menu-title">Settings</span>
 
                     </a>
 
-                </li>
+                </li> */}
 
 
             </ul>

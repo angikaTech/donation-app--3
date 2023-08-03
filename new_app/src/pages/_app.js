@@ -11,6 +11,7 @@ import ErrorBoundary from '@/copmonent/ErrorBoundary'
 
 
 
+
 export default function App({ Component, pageProps }) {
 
 
@@ -23,7 +24,7 @@ export default function App({ Component, pageProps }) {
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
       <title>Skydash Admin</title>
 
-      <link rel="stylesheet" href="vendors/feather/feather.css" />
+      {/* <link rel="stylesheet" href="vendors/feather/feather.css" />
       <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css" />
       <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css" />
 
@@ -35,12 +36,13 @@ export default function App({ Component, pageProps }) {
 
       <link rel="stylesheet" href="css/vertical-layout-light/style.css" />
 
-      <link rel="shortcut icon" href="images/favicon.png" />
-      <script src="js/off-canvas.js"></script>
-      <script src="js/hoverable-collapse.js"></script>
-      <script src="js/template.js"></script>
-      <script src="js/settings.js"></script>
-      <script src="js/todolist.js"></script>
+      <link rel="shortcut icon" href="images/favicon.png" /> */}
+
+      <script src="/js/off-canvas.js"></script>
+      <script src="/js/hoverable-collapse.js"></script>
+      <script src="/js/template.js"></script>
+      <script src="/js/settings.js"></script>
+      <script src="/js/todolist.js"></script>
 
     </Head>
 
@@ -48,8 +50,12 @@ export default function App({ Component, pageProps }) {
 
 
 
-
-    < Script src="vendors/js/vendor.bundle.base.js" strategy="beforeInteractive"></Script >
+    {/* <Script src="/js/off-canvas.js" strategy="beforeInteractive"></Script>
+    <Script src="/js/hoverable-collapse.js" strategy="beforeInteractive"></Script>
+    <Script src="/js/template.js" strategy="beforeInteractive"></Script>
+    <Script src="/js/settings.js " strategy="beforeInteractive"></Script>
+    <Script src="/js/todolist.js" strategy="beforeInteractive"></Script> */}
+    {/* <Script src="vendors/js/vendor.bundle.base.js" strategy="beforeInteractive"></Script >
 
     <Script src="vendors/chart.js/Chart.min.js" strategy="beforeInteractive"></Script>
     <Script src="vendors/datatables.net/jquery.dataTables.js" strategy="beforeInteractive"></Script>
@@ -57,14 +63,9 @@ export default function App({ Component, pageProps }) {
     <Script src="js/dataTables.select.min.js" strategy="beforeInteractive"></Script>
 
 
-    {/* <Script src="js/off-canvas.js" strategy="beforeInteractive"></Script>
-    <Script src="js/hoverable-collapse.js" strategy="beforeInteractive"></Script>
-    <Script src="js/template.js" strategy="beforeInteractive"></Script>
-    <Script src="js/settings.js" strategy="beforeInteractive"></Script>
-    <Script src="js/todolist.js" strategy="beforeInteractive"></Script> */}
 
     <Script src="js/dashboard.js" strategy="beforeInteractive"></Script>
-    <Script src="js/Chart.roundedBarCharts.js" strategy="beforeInteractive"></Script>
+    <Script src="js/Chart.roundedBarCharts.js" strategy="beforeInteractive"></Script> */}
 
 
     <ErrorBoundary>

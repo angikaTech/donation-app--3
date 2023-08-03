@@ -1,15 +1,10 @@
+'use client'
 import Head from 'next/head'
-import Image from 'next/image'
-// import { Inter } from 'next/font/google'
 import Header from '@/copmonent/super_admin/header'
-// import Sidebar from '@/copmonent/super_admin/sidebar'
 import Sidebar from '@/copmonent/super_admin/sidebar'
 import Footer from '@/copmonent/super_admin/footer'
-// import Rightsidbar from '@/copmonent/super_admin/right-sidebar'
 import Skin from '@/copmonent/super_admin/skin'
 
-
-// const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return (
@@ -420,7 +415,7 @@ export default function Home() {
                             <li className="completed">
                               <div className="form-check form-check-flat">
                                 <label className="form-check-label">
-                                  <input className="checkbox" type="checkbox" checked />
+                                  {/* <input className="checkbox" type="checkbox" checked /> */}
                                   Duplicate a project for new customer
                                 </label>
                               </div>
@@ -438,7 +433,7 @@ export default function Home() {
                             <li className="completed">
                               <div className="form-check form-check-flat">
                                 <label className="form-check-label">
-                                  <input className="checkbox" type="checkbox" checked />
+                                  {/* <input className="checkbox" type="checkbox" checked /> */}
                                   Follow up of team zilla
                                 </label>
                               </div>

@@ -20,10 +20,9 @@ export default function Settings() {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getProfile());
-
-
     }, []);
     const profilestate = useSelector((state) => state.profile.profile);
+
     // const [isSuccess, profile] = useSelector((state) => state.profile.profile);
 
     // const [file, setFile] = useState(null);
@@ -66,14 +65,15 @@ export default function Settings() {
 
         initialValues: {
             file: "",
-            id: "64afe440dc04f6cfe1f3853d"
+            id: "64afe440dc04f6cfe1f3853d",
+            organization: ""
 
         },
         // validationSchema: schema,
         onSubmit: async (values) => {
 
             // dispach(createPayee(values));
-
+            console.log(values);
 
 
             const formData = new FormData();
@@ -94,6 +94,14 @@ export default function Settings() {
                 window.location.reload();
 
             } catch (err) { console.log(err) }
+        },
+        onSubmit1: async (values) => {
+
+            console.log(values);
+            // try {
+
+
+            // } catch (err) { console.log(err) }
         },
 
     });
@@ -155,6 +163,7 @@ export default function Settings() {
 
                                                                         <input type='file' style={{ margin: "25px 0px 0px 0px" }} accept="application/image/jpeg,image/png"
                                                                             // onChange={formik.handleChange("file")}
+                                                                            required
                                                                             onChange={(event) => formik.setFieldValue('file', event.target.files[0])}
                                                                         // value={formik.values.file}
                                                                         />
@@ -168,29 +177,114 @@ export default function Settings() {
 
                                                             <div class="modal-footer " style={{ textAlign: "center" }} >
                                                                 {/* <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> */}
-                                                                <button type='submit' class="btn btn-danger btn" style={{ margin: "25px 25px 0px 25px" }}>Upload</button>
+                                                                <button type='submit' class="btn btn-danger btn-sm" style={{ margin: "25px 25px 0px 25px" }}>Upload</button>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             {/* photo update model end */}
-                                        </form>
+                                        </form >
                                     </div>
                                 </div>
                                 <div className='container mt-5'>
                                     <div className='row ml-5'>
                                         <div className='col-md-4'>
-                                            <h6 className='mt-3 mr-3'>Mobile no. : 827349827343 </h6>
+                                            <h6 className='mt-3 mr-3'>Organization : {profilestate.organization} </h6>
                                         </div>
-                                        <button className='btn btn-danger mb-3 '>Update </button>
+                                        <button className='btn btn-danger mb-3 btn-sm' data-toggle="modal" data-target="#organizationModal">Update </button>
+                                        <div class="modal fade" id="organizationModal" role="dialog">
+                                            <div class="modal-dialog">
+                                                <from onSubmit1={formik.handleSubmit}>
+
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                            <h4 class="modal-title"></h4>
+                                                        </div>
+                                                        <div className="content-wrapper">
+                                                            <div className="row">
+                                                                <div className="col-md-3 grid-margin ">
+
+                                                                    <input type='string' style={{ margin: "25px 0px 0px 0px" }} accept="application/image/jpeg,image/png"
+
+                                                                        onChange={formik.handleChange("organization")}
+                                                                        value={formik.values.organization}
+
+                                                                    />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer " style={{ textAlign: "center" }} >
+                                                            <button type='submit' onClick={"submit"} class="btn btn-danger btn-sm" style={{ margin: "25px 25px 0px 25px" }}>Upload</button>
+                                                        </div>
+                                                    </div>
+                                                </from>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div className='row ml-5'>
                                         <div className='col-md-4'>
-                                            <h6 className='mt-3 mr-3'>Password  </h6>
+                                            <h6 className='mt-3 mr-3'>Mobile no. : {profilestate.mobile} </h6>
                                         </div>
-                                        <button className='btn btn-danger  mb-3'>Update </button>
+                                        <button className='btn btn-danger mb-3 btn-sm' data-toggle="modal" data-target="#mobileModal">Update </button>
+                                        <div class="modal fade" id="mobileModal" role="dialog">
+                                            <div class="modal-dialog">
+
+
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                        <h4 class="modal-title"></h4>
+                                                    </div>
+                                                    <div className="content-wrapper">
+                                                        <div className="row">
+                                                            <div className="col-md-3 grid-margin ">
+                                                                <div className='col-md-4'>
+                                                                    <input />
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer " style={{ textAlign: "center" }} >
+                                                        <button type='submit' class="btn btn-danger btn-sm" style={{ margin: "25px 25px 0px 25px" }}>Upload</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
+                                    <div className='row ml-5'>
+                                        <div className='col-md-4'>
+                                            <h6 className='mt-3 mr-3'>Password : ***********  </h6>
+                                        </div>
+                                        <button className='btn btn-danger  mb-3 btn-sm' data-toggle="modal" data-target="#passwordModal">Update </button>
+                                        <div class="modal fade" id="passwordModal" role="dialog">
+                                            <div class="modal-dialog">
+
+
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                        <h4 class="modal-title"></h4>
+                                                    </div>
+                                                    <div className="content-wrapper">
+                                                        <div className="row">
+                                                            <div className="col-md-3 grid-margin ">
+
+                                                                <h1>passwordModal</h1>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer " style={{ textAlign: "center" }} >
+                                                        <button type='submit' class="btn btn-danger btn-sm" style={{ margin: "25px 25px 0px 25px" }}>Upload</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
                                 </div>
                             </div>
 

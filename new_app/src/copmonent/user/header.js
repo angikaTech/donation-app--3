@@ -1,17 +1,19 @@
+import { getProfile } from "@/features/profile/profileSlice";
+import { base_url } from "@/utils/base_url";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Header() {
 
-
+    const dispatch = useDispatch();
     const router = useRouter();
 
     const { user, isLoading, isError, isSuccess, message } = useSelector(
         (state) => state.auth
     );
 
-
+    const profilestate = useSelector((state) => state.profile.profile);
 
     useEffect(() => {
         if (user || isSuccess) {
@@ -23,7 +25,10 @@ export default function Header() {
     }, [user, isLoading, isError, isSuccess]
     );
 
+    useEffect(() => {
 
+        dispatch(getProfile());
+    }, [])
 
 
 
@@ -38,7 +43,7 @@ export default function Header() {
 
         <nav className="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div className="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-                <a className="navbar-brand brand-logo mr-5" href="index.html"><img src="images/logo.svg" className="mr-2" alt="logo" /></a>
+                <a className="navbar-brand brand-logo mr-5" href="./"><img src="images/logo.svg" className="mr-2" alt="logo" /></a>
                 <a className="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo-mini.svg" alt="logo" /></a>
             </div>
             <div className="navbar-menu-wrapper d-flex align-items-center justify-content-end">
@@ -108,7 +113,9 @@ export default function Header() {
                     </li>
                     <li className="nav-item nav-profile dropdown">
                         <a className="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                            <img src="images/faces/face28.jpg" alt="profile" />
+                            <img src={base_url + "images/" + profilestate.document} alt="profile" />
+                            {/* <img src="images/faces/face28.jpg" alt="profile" /> */}
+
                         </a>
                         <div className="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                             <a className="dropdown-item" href="settings">

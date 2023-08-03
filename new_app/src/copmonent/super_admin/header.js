@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Image from "next/image";
 
 export default function Header() {
     const dispatch = useDispatch();
@@ -48,8 +49,24 @@ export default function Header() {
 
         <nav className="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div className="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-                <a className="navbar-brand brand-logo mr-5" href="index.html"><img src="images/logo.svg" className="mr-2" alt="logo" /></a>
-                <a className="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo-mini.svg" alt="logo" /></a>
+                <a className="navbar-brand brand-logo mr-5" href="/list-admin">
+                    {/* <img src="images/logo.svg" className="mr-2" alt="logo" /> */}
+                    <Image
+                        src="/images/logo.svg"
+                        width={500}
+                        height={500}
+                        alt="logo"
+                    />
+                </a>
+                <a className="navbar-brand brand-logo-mini" href="index.html">
+                    {/* <img src="images/logo-mini.svg" alt="logo" /> */}
+                    <Image
+                        src="/images/logo-mini.svg"
+                        width={500}
+                        height={500}
+                        alt="logo"
+                    />
+                </a>
             </div>
             <div className="navbar-menu-wrapper d-flex align-items-center justify-content-end">
                 <button className="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -118,7 +135,14 @@ export default function Header() {
                     </li>
                     <li className="nav-item nav-profile dropdown">
                         <a className="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                            <img src="images/faces/face28.jpg" alt="profile" />
+                            {/* <img src="images/faces/face28.jpg" alt="profile" /> */}
+                            <Image
+                                src="/images/faces/face28.jpg"
+                                width={500}
+                                height={500}
+                                alt="Picture of the author"
+                            />
+
                         </a>
                         <div className="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                             <a className="dropdown-item" href="settings">
@@ -131,13 +155,13 @@ export default function Header() {
                             </a>
                         </div>
                     </li>
-                    <li className="nav-item nav-settings d-none d-lg-flex">
+                    {/* <li className="nav-item nav-settings d-none d-lg-flex">
                         <a className="nav-link" href="#">
                             <i className="icon-ellipsis"></i>
                         </a>
-                    </li>
+                    </li> */}
                 </ul>
-                <button className="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+                <button className="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" dataToggle="offcanvas">
                     <span className="icon-menu"></span>
                 </button>
             </div>

@@ -85,7 +85,7 @@ export default function Profile() {
                                             <div className=" mt-auto" >
                                                 {/* <img src="http://localhost:5000/api/images/logo.jpeg" alt="people" */}
                                                 <img src={base_url + "images/" + profilestate.document} alt="people"
-                                                    profilestate
+                                                    // profilestate
                                                     style={{ borderRadius: "50%", height: "200px", width: "200px", overflow: "hidden", display: "flex", justifyContent: "center", alignItems: "center" }}
                                                 />
                                             </div>
@@ -107,22 +107,22 @@ export default function Profile() {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
-                                                <div class="card card-light-blue">
-                                                    <div class="card-body">
-                                                        <p class="mb-4">Total Amount Recived </p>
-                                                        <p class="fs-30 mb-2 counter">{amount}</p>
+                                        <div className="row">
+                                            <div className="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
+                                                <div className="card card-light-blue">
+                                                    <div className="card-body">
+                                                        <p className="mb-4">Total Amount Recived </p>
+                                                        <p className="fs-30 mb-2 counter">{amount}</p>
                                                         {/* <p>2.00% (30 days)</p> */}
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6 stretch-card transparent">
-                                                <div class="card card-light-danger">
-                                                    <div class="card-body">
-                                                        <p class="mb-4">Number of Payers</p>
+                                            <div className="col-md-6 stretch-card transparent">
+                                                <div className="card card-light-danger">
+                                                    <div className="card-body">
+                                                        <p className="mb-4">Number of Payers</p>
 
-                                                        <p class="fs-30 mb-2 counter">{paymentstate.length}</p>
+                                                        <p className="fs-30 mb-2 counter">{paymentstate.length}</p>
                                                         {/* <p>0.22% (30 days)</p> */}
                                                     </div>
                                                 </div>
@@ -156,12 +156,12 @@ export default function Profile() {
                                                                     <tr key={key}>
                                                                         <td>{key + 1}</td>
                                                                         <td >{value.name}</td>
-                                                                        {/* <td>9879278397823</td> */}
+
                                                                         <td className="font-weight-bold">₹{value.amount}</td>
                                                                         <td >{value.payment_mode}</td>
-                                                                        {/* <td>21 Sep 2018</td> */}
+
                                                                         <td>
-                                                                            {/* {value.createdAt} */}
+
                                                                             {moment(value.createdAt).format('DD-MM-YYYY')}
                                                                         </td>
                                                                         < td className="font-weight-medium"><div className="badge badge-success">Download</div></td>
@@ -175,24 +175,7 @@ export default function Profile() {
 
                                                                         } */}
                                                                     </tr>
-                                                                    {/* <tr>
-                                                                <td>2.</td>
-                                                                <td>xyzabc</td>
-                                                             
-                                                                <td className="font-weight-bold">$523</td>
-                                                                <td>online</td>
-                                                                <td>30 Jun 2018</td>
-                                                                <td className="font-weight-medium"><div className="badge badge-warning">Pending</div></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>3.</td>
-                                                                <td>xyzabc</td>
-                                                              
-                                                                <td className="font-weight-bold">$781</td>
-                                                                <td>online</td>
-                                                                <td>01 Nov 2018</td>
-                                                                <td className="font-weight-medium"><div className="badge badge-danger">Cancelled</div></td>
-                                                            </tr> */}
+
                                                                 </tbody>
                                                             )
                                                         })}

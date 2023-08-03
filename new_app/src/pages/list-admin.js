@@ -8,6 +8,9 @@ import Skin from '@/copmonent/user/skin'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { getUsers } from '../features/customers/customerSlice'
+import { getProfile } from '@/features/profile/profileSlice'
+import { useRouter } from 'next/router'
+import Link from 'next/link'
 
 
 // const inter = Inter({ subsets: ['latin'] })
@@ -17,10 +20,17 @@ export default function SuperAdminList() {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getUsers());
+        // dispatch(getProfile());
+        dispatch(getProfile());
 
     }, []);
     const customerstate = useSelector((state) => state.customer.customers);
+    const profilestate = useSelector((state) => state.profile.profile)
+    // const getProfile = use
     // console.log(customerstate[0].isSubscribed)
+    // console.log(profilestate._id)
+
+    const router = useRouter();
     return (
         <>
             <Head>
@@ -33,7 +43,7 @@ export default function SuperAdminList() {
                 <div className="container-scroller">
                     <Header />
                     <div className="container-fluid page-body-wrapper">
-                        <Skin />
+                        {/* <Skin /> */}
 
                         <Sidebar />
                         <div className="main-panel">
@@ -60,6 +70,8 @@ export default function SuperAdminList() {
                                                             </tr>
                                                         </thead>
                                                         {customerstate.map((value, key) => {
+
+                                                            const id = value._id;
                                                             return (
                                                                 <tbody  >
                                                                     <tr>
@@ -70,7 +82,27 @@ export default function SuperAdminList() {
 
                                                                         {value.isSubscribed == true ? <td>Subscribed</td> : <td>Not Subscribed</td>}
                                                                         {value.isBlocked == true ? <td>Blocked</td> : <td>Unblocked</td>}
-                                                                        <td className="font-weight-medium"><div className="badge badge-success">Profile</div></td>
+                                                                        <td className="font-weight-medium">
+                                                                            {/* <button className="badge badge-success">
+                                                                                <a onClick={() => {
+                                                                                    router.push(`/profile-admin/[${value._id}]`)
+                                                                                   
+
+                                                                                }}>
+
+                                                                                    Profile
+                                                                                </a>
+                                                                            </button> */}
+
+                                                                            <Link legacyBehavior
+                                                                                href={{
+                                                                                    pathname: `profile-admin/[id]`,
+                                                                                    query: { id: id },
+                                                                                }}
+                                                                            >
+                                                                                <a>Details</a>
+                                                                            </Link>
+                                                                        </td>
                                                                     </tr>
 
                                                                 </tbody>

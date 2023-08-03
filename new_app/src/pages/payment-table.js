@@ -25,10 +25,12 @@ export default function PaymentTable() {
     useEffect(() => {
         dispatch(getPayee());
 
+
+
     }, []);
 
-    const paymentstate = useSelector((state) => state.paymenttable.paymenttable
-    );
+    const paymentstate = useSelector((state) => state.paymenttable.paymenttable);
+
 
     // console.log(paymentstate.length)
     return (

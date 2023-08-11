@@ -1,7 +1,11 @@
+"use client"
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Image from "next/image";
+import Script from "next/script";
+import { base_url } from "@/utils/base_url";
+
 
 export default function Header() {
     const dispatch = useDispatch();
@@ -33,6 +37,9 @@ export default function Header() {
 
     }, [user, isLoading, isError, isSuccess]
     );
+
+
+
 
 
 
@@ -136,14 +143,17 @@ export default function Header() {
                     <li className="nav-item nav-profile dropdown">
                         <a className="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
                             {/* <img src="images/faces/face28.jpg" alt="profile" /> */}
-                            <Image
-                                src="/images/faces/face28.jpg"
+                            {/* <Image
+                                href="/images/faces/face28.jpg"
                                 width={500}
                                 height={500}
                                 alt="Picture of the author"
-                            />
+                            /> */}
+                            <img src={base_url + "images//logo.jpeg"} width={500}
+                                height={500} alt="people"></img>
 
                         </a>
+                        {/* <img src={base_url + "images/" + profilestate.document} alt="profile" /> */}
                         <div className="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                             <a className="dropdown-item" href="settings">
                                 <i className="ti-settings text-primary"></i>
@@ -161,10 +171,11 @@ export default function Header() {
                         </a>
                     </li> */}
                 </ul>
-                <button className="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" dataToggle="offcanvas">
+                <button className="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
                     <span className="icon-menu"></span>
                 </button>
             </div>
+
         </nav>
 
     )

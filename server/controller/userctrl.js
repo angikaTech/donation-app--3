@@ -123,19 +123,21 @@ const logout = asyncHandler(async (req, res) => {
 // update user
 const updatedUser = asyncHandler(async (req, res) => {
     console.log();
-    const { _id } = req.user;
+    const { _id } = req.body;
     validateMongoDbId(_id);
     try {
         const updatedUser = await User.findByIdAndUpdate(
             _id,
             {
-                name: req?.body?.name,
-                email: req?.body?.email,
+                // name: req?.body?.name,
+                // email: req?.body?.email,
                 mobile: req?.body?.mobile,
+                organization: req?.body?.organization,
+                password: req?.body?.password,
             },
             {
                 new: true,
-            }
+            },
 
         );
         res.json(updatedUser);
@@ -143,6 +145,33 @@ const updatedUser = asyncHandler(async (req, res) => {
         throw new Error(error)
     }
 });
+
+
+// update orgnization 
+
+// const updateOrgnization = asyncHandler(async (req, res) => {
+//     console.log();
+//     const { _id } = req.user;
+//     validateMongoDbId(_id);
+//     try {
+//         const updatedUser = await User.findByIdAndUpdate(
+//             _id,
+//             {
+//                 orgnization: req?.body?.orgnization,
+
+//             },
+//             {
+//                 new: true,
+//             }
+
+//         );
+//         res.json(updatedUser);
+//     } catch (error) {
+//         throw new Error(error)
+//     }
+// });
+
+
 // Get all users
 
 const getallUser = asyncHandler(async (req, res,) => {
@@ -226,7 +255,19 @@ const unblockUser = asyncHandler(async (req, res) => {
     }
 });
 
-
+const updatePassword = asyncHandler(async (req, res) => {
+    const { _id } = req.body;
+    const { password } = req.body;
+    validateMongoDbId(_id);
+    const user = await User.findById(_id);
+    if (password) {
+        user.password = password;
+        const updatedPassword = await user.save();
+        res.json(updatedPassword);
+    } else {
+        res.json(user);
+    }
+});
 
 
 module.exports = {
@@ -240,5 +281,7 @@ module.exports = {
     unblockUser,
     logout,
     handleRefreshToken,
+    // updateOrgnization,
+    updatePassword,
 
 };

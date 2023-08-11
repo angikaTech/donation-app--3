@@ -28,10 +28,10 @@ export default function Home() {
                   <div className="col-md-12 grid-margin">
                     <div className="row">
                       <div className="col-12 col-xl-8 mb-4 mb-xl-0">
-                        <h3 className="font-weight-bold">Welcome Aamir</h3>
-                        <h6 className="font-weight-normal mb-0">All systems are running smoothly! You have <span className="text-primary">3 unread alerts!</span></h6>
+                        <h3 className="font-weight-bold">Welcome admin</h3>
+                        <h6 className="font-weight-normal mb-0">All systems are running smoothly!</h6>
                       </div>
-                      <div className="col-12 col-xl-4">
+                      {/* <div className="col-12 col-xl-4">
                         <div className="justify-content-end d-flex">
                           <div className="dropdown flex-md-grow-1 flex-xl-grow-0">
                             <button className="btn btn-sm btn-light bg-white dropdown-toggle" type="button" id="dropdownMenuDate2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -45,13 +45,13 @@ export default function Home() {
                             </div>
                           </div>
                         </div>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </div>
                 <div className="row">
                   <div className="col-md-6 grid-margin stretch-card">
-                    <div className="card tale-bg">
+                    {/* <div className="card tale-bg">
                       <div className="card-people mt-auto">
                         <img src="images/dashboard/people.svg" alt="people" />
                         <div className="weather-info">
@@ -66,6 +66,12 @@ export default function Home() {
                           </div>
                         </div>
                       </div>
+                    </div> */}
+                    <div>
+                      <div className=" mt-auto" >
+                        <img src="http://localhost:5000/api/images/logo.jpeg" alt="people"></img>
+
+                      </div>
                     </div>
                   </div>
                   <div className="col-md-6 grid-margin transparent">
@@ -73,18 +79,16 @@ export default function Home() {
                       <div className="col-md-6 mb-4 stretch-card transparent">
                         <div className="card card-tale">
                           <div className="card-body">
-                            <p className="mb-4">Today’s Bookings</p>
+                            <p className="mb-4">Total Users</p>
                             <p className="fs-30 mb-2">4006</p>
-                            <p>10.00% (30 days)</p>
                           </div>
                         </div>
                       </div>
                       <div className="col-md-6 mb-4 stretch-card transparent">
                         <div className="card card-dark-blue">
                           <div className="card-body">
-                            <p className="mb-4">Total Bookings</p>
+                            <p className="mb-4">Total Subscribers</p>
                             <p className="fs-30 mb-2">61344</p>
-                            <p>22.00% (30 days)</p>
                           </div>
                         </div>
                       </div>
@@ -93,25 +97,16 @@ export default function Home() {
                       <div className="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
                         <div className="card card-light-blue">
                           <div className="card-body">
-                            <p className="mb-4">Number of Meetings</p>
+                            <p className="mb-4">Total Amount Recieved</p>
                             <p className="fs-30 mb-2">34040</p>
-                            <p>2.00% (30 days)</p>
                           </div>
                         </div>
                       </div>
-                      <div className="col-md-6 stretch-card transparent">
-                        <div className="card card-light-danger">
-                          <div className="card-body">
-                            <p className="mb-4">Number of Clients</p>
-                            <p className="fs-30 mb-2">47033</p>
-                            <p>0.22% (30 days)</p>
-                          </div>
-                        </div>
-                      </div>
+
                     </div>
                   </div>
                 </div>
-                <div className="row">
+                {/* <div className="row">
                   <div className="col-md-6 grid-margin stretch-card">
                     <div className="card">
                       <div className="card-body">
@@ -152,8 +147,8 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
-                </div>
-                <div className="row">
+                </div> */}
+                {/* <div className="row">
                   <div className="col-md-12 grid-margin stretch-card">
                     <div className="card position-relative">
                       <div className="card-body">
@@ -332,8 +327,8 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
-                </div>
-                <div className="row">
+                </div> */}
+                {/* <div className="row">
                   <div className="col-md-7 grid-margin stretch-card">
                     <div className="card">
                       <div className="card-body">
@@ -415,7 +410,7 @@ export default function Home() {
                             <li className="completed">
                               <div className="form-check form-check-flat">
                                 <label className="form-check-label">
-                                  {/* <input className="checkbox" type="checkbox" checked /> */}
+                                  <input className="checkbox" type="checkbox" checked />}
                                   Duplicate a project for new customer
                                 </label>
                               </div>
@@ -433,7 +428,7 @@ export default function Home() {
                             <li className="completed">
                               <div className="form-check form-check-flat">
                                 <label className="form-check-label">
-                                  {/* <input className="checkbox" type="checkbox" checked /> */}
+                                   <input className="checkbox" type="checkbox" checked />}
                                   Follow up of team zilla
                                 </label>
                               </div>
@@ -457,8 +452,8 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
-                </div>
-                <div className="row">
+                </div> */}
+                {/* <div className="row">
                   <div className="col-md-4 stretch-card grid-margin">
                     <div className="card">
                       <div className="card-body">
@@ -637,8 +632,8 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
-                </div>
-                <div className="row">
+                </div> */}
+                {/* <div className="row">
                   <div className="col-md-12 grid-margin stretch-card">
                     <div className="card">
                       <div className="card-body">
@@ -666,7 +661,7 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
               <Footer />
 

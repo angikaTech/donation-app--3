@@ -27,15 +27,9 @@ export default function SuperAdminProfile() {
 
             setprofiles(response.data);
 
-
-
         });
 
     }, [id1])
-
-
-
-
     console.log(profiles)
 
 
@@ -51,7 +45,7 @@ export default function SuperAdminProfile() {
                 <meta charset="utf-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
                 <title>Skydash Admin</title>
-                <script src="/js/template.js"></script>
+                {/* <script src="/js/template.js"></script> */}
 
             </Head>
             <main>
@@ -113,10 +107,10 @@ export default function SuperAdminProfile() {
                                                                 <td >{moment(profiles.updatedAt).format('DD-MM-YYYY')} </td>
                                                             </tr>
 
-                                                            <tr>
+                                                            {/* <tr>
                                                                 <td >Profile Status </td>
                                                                 <td >{profiles.isBlocked === true ? <>Blocked</> : <>Unblocked</>} </td>
-                                                            </tr>
+                                                            </tr> */}
                                                             <tr>
                                                                 <td >Subscription  </td>
                                                                 <td >{profiles.isSubscribed === true ? <>Subscribed</> : <>Not Subscribed</>} </td>

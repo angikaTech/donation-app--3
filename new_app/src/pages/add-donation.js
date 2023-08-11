@@ -14,6 +14,8 @@ import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import { createPayee } from '@/features/payee/payeeSlice'
 import { useRouter } from 'next/router'
+import { getProfile } from '@/features/profile/profileSlice'
+import Link from 'next/link'
 
 
 // const inter = Inter({ subsets: ['latin'] })
@@ -46,12 +48,18 @@ export default function AddDonation() {
         },
 
     });
+    useEffect(() => {
+        dispach(getProfile());
+    }, [])
 
 
     const { isLoading, isError, isSuccess, message } = useSelector(
         (state) => state.payee
     );
+    const userState = useSelector((state) => state.profile.profile);
+    const subscribed = userState.isSubscribed
 
+    console.log(subscribed)
     useEffect(() => {
         if (isError === true) {
             toast.error("Not submited")
@@ -141,7 +149,7 @@ export default function AddDonation() {
                                                         </select>
                                                     </div>
 
-                                                    <button type="submit" className="btn btn-primary mr-2">Add</button>
+                                                    {subscribed === true ? <button type="submit" className="btn btn-primary mr-2">Add</button> : <Link href='#please-subscribe'><button type="button" className="btn btn-primary mr-2">Add</button></Link>}
                                                 </form>
                                             </div>
                                         </div>

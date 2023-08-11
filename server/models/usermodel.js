@@ -61,9 +61,20 @@ var userSchema = new mongoose.Schema(
     }
 );
 
+// userSchema.pre("save", async function (next) {
+
+//     const salt = await bcrypt.genSaltSync(10);
+//     this.password = await bcrypt.hash(this.password, salt);
+// });
 userSchema.pre("save", async function (next) {
-    const salt = await bcrypt.genSaltSync(10);
+    if (!this.isModified("password")) {
+        // If the password field is not being modified, move to the next middleware
+        return next();
+    }
+
+    const salt = await bcrypt.genSalt(10);
     this.password = await bcrypt.hash(this.password, salt);
+    next();
 });
 userSchema.methods.isPasswordMatched = async function (enterdPassword) {
     return await bcrypt.compare(enterdPassword, this.password)

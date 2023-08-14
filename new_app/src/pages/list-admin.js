@@ -20,12 +20,12 @@ export default function SuperAdminList() {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getUsers());
+
         // dispatch(getProfile());
-        dispatch(getProfile());
 
     }, []);
     const customerstate = useSelector((state) => state.customer.customers);
-    const profilestate = useSelector((state) => state.profile.profile)
+    // const profilestate = useSelector((state) => state.profile.profile)
     // const getProfile = use
     // console.log(customerstate[0].isSubscribed)
     // console.log(profilestate._id)

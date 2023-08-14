@@ -3,10 +3,26 @@ import Head from 'next/head'
 import Header from '@/copmonent/super_admin/header'
 import Sidebar from '@/copmonent/super_admin/sidebar'
 import Footer from '@/copmonent/super_admin/footer'
-import Skin from '@/copmonent/super_admin/skin'
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import { getUsers } from '@/features/customers/customerSlice'
+
 
 
 export default function Home() {
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getUsers());
+
+
+  }, [])
+
+  const customerstate = useSelector((state) => state.customer.customers);
+
+  // console.log(customerstate.filter((value) => value.isSubscribed === true).length)
+  // console.log(customerstate.reduce((sum, value) => sum + value.amount, 0))
+
   return (
     <>
       <Head>
@@ -19,8 +35,7 @@ export default function Home() {
         <div className="container-scroller">
           <Header />
           <div className="container-fluid page-body-wrapper">
-            <Skin />
-            {/* <Rightsidbar /> */}
+
             <Sidebar />
             <div className="main-panel">
               <div className="content-wrapper">
@@ -37,12 +52,7 @@ export default function Home() {
                             <button className="btn btn-sm btn-light bg-white dropdown-toggle" type="button" id="dropdownMenuDate2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                               <i className="mdi mdi-calendar"></i> Today (10 Jan 2021)
                             </button>
-                            <div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuDate2">
-                              <a className="dropdown-item" href="#">January - March</a>
-                              <a className="dropdown-item" href="#">March - June</a>
-                              <a className="dropdown-item" href="#">June - August</a>
-                              <a className="dropdown-item" href="#">August - November</a>
-                            </div>
+                           
                           </div>
                         </div>
                       </div> */}
@@ -80,7 +90,7 @@ export default function Home() {
                         <div className="card card-tale">
                           <div className="card-body">
                             <p className="mb-4">Total Users</p>
-                            <p className="fs-30 mb-2">4006</p>
+                            <p className="fs-30 mb-2">{customerstate.length}</p>
                           </div>
                         </div>
                       </div>
@@ -88,7 +98,7 @@ export default function Home() {
                         <div className="card card-dark-blue">
                           <div className="card-body">
                             <p className="mb-4">Total Subscribers</p>
-                            <p className="fs-30 mb-2">61344</p>
+                            <p className="fs-30 mb-2">{customerstate.filter((value) => value.isSubscribed === true).length}</p>
                           </div>
                         </div>
                       </div>
@@ -98,7 +108,7 @@ export default function Home() {
                         <div className="card card-light-blue">
                           <div className="card-body">
                             <p className="mb-4">Total Amount Recieved</p>
-                            <p className="fs-30 mb-2">34040</p>
+                            <p className="fs-30 mb-2">0</p>
                           </div>
                         </div>
                       </div>

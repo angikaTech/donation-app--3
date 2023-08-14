@@ -28,21 +28,19 @@ export default function Document() {
       <body>
         <Main />
         <NextScript />
-        {/* upper */}
-        {/* <Script src="js/off-canvas.js" strategy="beforeInteractive"></Script>
-        <Script src="js/hoverable-collapse.js" strategy="beforeInteractive"></Script>
-        <Script src="js/settings.js" strategy="beforeInteractive"></Script>
-        <Script src="js/todolist.js" strategy="beforeInteractive"></Script>
-        <Script src="js/template.js " strategy="beforeInteractive"></Script> */}
-        {/* upper */}
 
-
+        {/* vendors js shoul be first exicute then templates  */}
+        <Script src="/vendors/js/vendor.bundle.base.js" strategy="beforeInteractive"  ></Script >
         <Script src="/js/hoverable-collapse.js" strategy="beforeInteractive"></Script>
         <Script src="/js/template.js" strategy="beforeInteractive"></Script>
         <Script src="/js/settings.js" strategy="beforeInteractive"></Script>
         <Script src="/js/todolist.js" strategy="beforeInteractive"></Script>
         <Script src="/js/off-canvas.js" strategy="beforeInteractive"></Script>
-        <Script src="/vendors/js/vendor.bundle.base.js" strategy="beforeInteractive"></Script >
+
+
+
+
+
 
         <Script src="/vendors /chart.js/Chart.min.js" strategy="beforeInteractive"></Script>
         <Script src="/vendors/datatables.net/jquery.dataTables.js" strategy="beforeInteractive"></Script>

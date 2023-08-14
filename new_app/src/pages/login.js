@@ -163,7 +163,7 @@ export default function Login() {
                                                         Keep me signed in
                                                     </label>
                                                 </div> */}
-                                                <a href="#" className="auth-link text-black">Forgot password?</a>
+                                                {/* <a href="#" className="auth-link text-black">Forgot password?</a> */}
                                             </div>
                                             <div className="mb-2">
                                                 {/* <button type="button" className="btn btn-block btn-facebook auth-form-btn">

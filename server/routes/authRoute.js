@@ -1,7 +1,7 @@
 const express = require("express");
 const { createUser, loginUserCtrl, getallUser, getaUser, deleteaUser, updatedUser, blockUser, unblockUser, handleRefreshToken, logout, updateOrgnization, updatePassword } = require("../controller/userctrl");
 const { authMiddleware, isAdmin } = require("../middlewares/authMiddleware");
-const { createPayee, getPayee, successfullPayment, totalAmount } = require("../controller/payeectrl");
+const { createPayee, getPayee, successfullPayment, totalAmount, getsinglePayee } = require("../controller/payeectrl");
 
 const router = express.Router();
 
@@ -23,6 +23,7 @@ router.get("/payee/:id", getPayee);
 router.get('/successfullPayment/:id', successfullPayment);
 router.get('/total-amount/:id', totalAmount);
 router.put('/update-password', updatePassword);
+router.get('/payee-by-id/:id', getsinglePayee)
 
 
 module.exports = router;

@@ -49069,8 +49069,179 @@ div.tagsinput span.tag a {
   }
 }
 
-.header-dark .hero .embed-responsive iframe {
-  /* background-color: #666; */
+.custom-container {
+  width: 1019px;
+  height: 435px;
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+}
+
+.id-background {
+  background-image: url("/images/RECIEPT1.jpg");
+  background-repeat: no-repeat;
+  background-size: 1019px 435px;
+}
+
+.org-logo {
+  width: 50%;
+  margin-top: 15px;
+  margin-left: 15px;
+}
+
+.org-name {
+  text-align: left;
+  padding-top: 51px;
+  font-size: 2rem;
+  color: #897e3d;
+  font-weight: 800;
+  text-shadow: 3px 3px 3px #8b7d78;
+}
+
+.org-add {
+  text-align: center;
+  padding-top: 3px;
+  font-size: 1.5rem;
+  color: #942f34;
+  font-weight: 500;
+}
+
+.org-date {
+  padding-top: 67px;
+}
+
+.member-name {
+  text-align: center;
+  padding-top: 24px;
+  font-size: 1.4rem;
+  color: #450005;
+  text-shadow: 1px 1px 2px #450005;
+}
+
+.donation-amt {
+  text-align: center;
+  padding-top: none;
+  font-size: 1.4rem;
+  color: #450005;
+  text-shadow: 1px 1px 2px #450005;
+}
+
+.event-type {
+  text-align: left;
+  color: #ea1f26;
+  font-size: 1.4em;
+  text-decoration: underline;
+  font-weight: 900;
+  font-style: italic;
+  margin-left: 40px;
+}
+
+.org-amt {
+  text-align: left;
+  color: #35363a;
+  font-size: 1.3em;
+  font-weight: 500;
+  font-style: italic;
+  padding-top: 75px;
+}
+
+.org-sign {
+  text-align: left;
+  color: #35363a;
+  font-size: 1.3em;
+  font-weight: 500;
+  font-style: italic;
+  padding-top: 75px;
+}
+
+@media screen and (max-width: 950px) {
+  .custom-container {
+    width: 350px;
+    height: 450px;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+  }
+
+  .id-background {
+    background-image: url("/images/RECIEPT1.jpg");
+    background-repeat: no-repeat;
+    background-size: 350px 450px;
+  }
+
+  .org-logo {
+    margin-left: auto;
+    margin-right: auto;
+    width: 35%;
+    margin-top: 5px;
+  }
+
+  .org-name {
+    text-align: left;
+    padding-top: 5px;
+    font-size: 1rem;
+    color: #897e3d;
+    font-weight: 800;
+    text-shadow: 3px 3px 3px #8b7d78;
+  }
+
+  .org-add {
+    text-align: center;
+    padding-top: 1px;
+    font-size: 0.9rem;
+    color: #942f34;
+    font-weight: 500;
+  }
+
+  .org-date {
+    padding-top: 113px;
+    font-size: 0.7rem;
+  }
+
+  .member-name {
+    text-align: center;
+    padding-top: 31px;
+    font-size: 1.4rem;
+    color: #450005;
+    text-shadow: 1px 1px 2px #450005;
+  }
+
+  .donation-amt {
+    text-align: center;
+    padding-top: none;
+    font-size: 1.4rem;
+    color: #450005;
+    text-shadow: 1px 1px 2px #450005;
+  }
+
+  .event-type {
+    text-align: left;
+    color: #ea1f26;
+    font-size: 0.6em;
+    padding-top: 10px;
+    text-decoration: underline;
+    font-weight: 900;
+    font-style: italic;
+    margin-left: 68px;
+  }
+
+  .org-amt {
+    text-align: left;
+    color: #35363a;
+    font-size: 1em;
+    font-weight: 500;
+    font-style: italic;
+    margin-left: 15px;
+    padding-top: 75px;
+  }
+
+  .org-sign {
+    text-align: left;
+    color: #35363a;
+    font-size: 1em;
+    font-weight: 500;
+    font-style: italic;
+    padding-top: 0px;
+    padding-left: 51px;
+  }
 }
 
 .error {

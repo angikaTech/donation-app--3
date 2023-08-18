@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { getPayee } from '@/features/paymenttable/paymenttableSlice'
 import moment from 'moment'
+import Link from 'next/link'
 
 
 
@@ -75,12 +76,14 @@ export default function PaymentTable() {
                                                         <tbody>
                                                             {paymentstate.map((value, key) => {
 
+                                                                const id = value._id
+
                                                                 return (
 
                                                                     <tr key={key}>
                                                                         <td>{key + 1}</td>
                                                                         <td >{value.name}</td>
-                                                                        {/* <td>9879278397823</td> */}
+
                                                                         <td className="font-weight-bold">₹{value.amount}</td>
                                                                         <td >{value.payment_mode}</td>
                                                                         <td>{moment(value.createdAt).format('DD-MM-YYYY')}</td>
@@ -98,7 +101,15 @@ export default function PaymentTable() {
                                                                                     : < td className="font-weight-medium"><div className="badge " > No data</div></td>
 
                                                                         } */}
-                                                                        < td className="font-weight-medium"><div className="badge badge-success">Download</div></td>
+                                                                        {/* < td className="font-weight-medium"><div className="badge badge-success">Download</div></td> */}
+                                                                        <td className="font-weight-medium">
+
+                                                                            <Link legacyBehavior
+                                                                                href={{
+                                                                                    pathname: `print-reciept/[id]`,
+                                                                                    query: { id: id },
+                                                                                }}
+                                                                            ><div className="badge badge-success">Download</div></Link></td>
                                                                     </tr>
 
 

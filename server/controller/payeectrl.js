@@ -22,7 +22,7 @@ const createPayee = asyncHandler(async (req, res) => {
 
 });
 
-// show payee payee 
+// show all payee 
 
 const getPayee = asyncHandler(async (req, res) => {
     try {
@@ -90,7 +90,24 @@ const totalAmount = asyncHandler(async (req, res) => {
     }
 });
 
+// show single payee by id
+const getsinglePayee = asyncHandler(async (req, res) => {
+    try {
 
+        const { id } = req.params;
+        validateMongoDbId(id);
+        const user = ((await Payee.findById(id)));
+        if (!user) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        res.json(user);
+
+    } catch (error) {
+        throw new Error(error)
+
+    }
+});
 
 
 module.exports = {
@@ -98,4 +115,5 @@ module.exports = {
     getPayee,
     successfullPayment,
     totalAmount,
+    getsinglePayee,
 };

@@ -38,6 +38,7 @@ export default function AddDonation() {
             amount: '',
             mobile: '',
             payment_mode: '',
+            event_type: '',
 
 
         },
@@ -45,6 +46,7 @@ export default function AddDonation() {
         onSubmit: (values) => {
 
             dispach(createPayee(values));
+            console.log(values)
         },
 
     });
@@ -108,6 +110,7 @@ export default function AddDonation() {
                                                             placeholder="Name"
                                                             onChange={formik.handleChange("name")}
                                                             value={formik.values.name}
+                                                            required
                                                         />
                                                     </div>
 
@@ -119,6 +122,7 @@ export default function AddDonation() {
                                                             placeholder="Amount"
                                                             onChange={formik.handleChange("amount")}
                                                             value={formik.values.amount}
+                                                            required
                                                         />
                                                     </div>
                                                     <div className="form-group">
@@ -130,6 +134,7 @@ export default function AddDonation() {
                                                             placeholder="Mobile number"
                                                             onChange={formik.handleChange("mobile")}
                                                             value={formik.values.mobile}
+                                                            required
                                                         />
                                                     </div>
                                                     <div className="form-group">
@@ -142,14 +147,31 @@ export default function AddDonation() {
                                                             value={formik.values.payment_mode}
                                                             required
                                                         >
-                                                            <option >Select</option>
+                                                            <option value="" disabled selected>Select</option>
                                                             <option value="offline"  >Offline</option>
                                                             <option value="Online">Online</option>
 
                                                         </select>
                                                     </div>
+                                                    <div className="form-group">
+                                                        <label for="event_type">Event</label>
+                                                        <select
+                                                            name="event_type"
+                                                            id="event_type"
+                                                            className="form-control"
+                                                            onChange={formik.handleChange("event_type")}
+                                                            value={formik.values.event_type}
+                                                            required
+                                                        >
+                                                            <option value="" disabled selected >Select</option>
+                                                            <option value="durga puja"  >Dura Puja</option>
+                                                            {/* <option value="Online">Diwali</option> */}
 
-                                                    {subscribed === true ? <button type="submit" className="btn btn-primary mr-2">Add</button> : <Link href='#please-subscribe'><button type="button" className="btn btn-primary mr-2">Add</button></Link>}
+                                                        </select>
+                                                    </div>
+                                                    {/* <input type='date'></input> */}
+
+                                                    {subscribed === true ? <button type="submit" className="btn btn-primary mr-2">Add</button> : <Link href='/subscribe-now'><button type="button" className="btn btn-primary mr-2">Add</button></Link>}
                                                 </form>
                                             </div>
                                         </div>

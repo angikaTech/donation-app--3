@@ -109,7 +109,12 @@ export default function PaymentTable() {
                                                                                     pathname: `print-reciept/[id]`,
                                                                                     query: { id: id },
                                                                                 }}
-                                                                            ><div className="badge badge-success">Download</div></Link></td>
+                                                                            >
+                                                                                <div className="badge badge-success">
+                                                                                    Download
+                                                                                </div>
+                                                                            </Link>
+                                                                        </td>
                                                                     </tr>
 
 
@@ -123,24 +128,7 @@ export default function PaymentTable() {
                                     </div>
 
                                 </div>
-                                {/* <tr>
-                                                                        <td>2.</td>
-                                                                        <td>xyzabc</td>
-                                                                       
-                                                                        <td className="font-weight-bold">$523</td>
-                                                                        <td>online</td>
-                                                                        <td>30 Jun 2018</td>
-                                                                        <td className="font-weight-medium"><div className="badge badge-warning">Pending</div></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>3.</td>
-                                                                        <td>xyzabc</td>
-                                                                        
-                                                                        <td className="font-weight-bold">$781</td>
-                                                                        <td>online</td>
-                                                                        <td>01 Nov 2018</td>
-                                                                        <td className="font-weight-medium"><div className="badge badge-danger">Cancelled</div></td>
-                                                                    </tr> */}
+
 
                             </div>
                             <Footer />

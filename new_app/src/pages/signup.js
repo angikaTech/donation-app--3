@@ -7,15 +7,20 @@ import { useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 export default function Singup() {
     const router = useRouter();
     const dispach = useDispatch();
     let schema = Yup.object().shape({
 
+        organization: Yup.string().required("Organization name required"),
+
         email: Yup.string().email("Email should be valid").required("Email is required"),
         password: Yup.string().required("Password is required"),
-
+        name: Yup.string().required(" Name is required"),
+        mobile: Yup.string().required("Mobile numeber required"),
+        address: Yup.string().required("Address is required"),
     });
     const formik = useFormik({
         initialValues: {
@@ -77,13 +82,26 @@ export default function Singup() {
                                         />
 
                                     </div>
+                                    <div className="error mt-2 mb-2" style={{ textAlign: "right" }}>
+                                        {formik.touched.organization && formik.errors.organization}
+                                    </div>
                                     <div className="form-group">
                                         <label for="name">Username</label>
-                                        <input type="text" className="form-control" id="name" placeholder="Username"
+                                        <input
+                                            type="text"
+                                            className="form-control"
+                                            id="name"
+                                            placeholder="Username"
                                             onChange={formik.handleChange("name")}
                                             value={formik.values.name}
+                                            pattern="[a-zA-Z ]{2,}$"
+                                            title="Accept only alphabets"
+
                                         />
 
+                                    </div>
+                                    <div className="error mt-2 mb-2" style={{ textAlign: "right" }}>
+                                        {formik.touched.name && formik.errors.name}
                                     </div>
 
                                     <div className="form-group">
@@ -91,14 +109,24 @@ export default function Singup() {
                                         <input type="email" className="form-control" id="email" placeholder="Email"
                                             onChange={formik.handleChange("email")}
                                             value={formik.values.email}
+                                            pattern="[a-zA-Z0-9]+[\.]?([a-zA-Z0-9]+)?[\@][a-z]{3,50}[\.][a-z]{2,15}"
+                                            title="Email should be in format abc@gmail.com "
                                         />
+                                    </div>
+                                    <div className="error mt-2 mb-2" style={{ textAlign: "right" }}>
+                                        {formik.touched.email && formik.errors.email}
                                     </div>
                                     <div className="form-group">
                                         <label for="mobile">Mobile</label>
                                         <input type="number" className="form-control" id="mobile" placeholder="Mobile"
                                             onChange={formik.handleChange("mobile")}
                                             value={formik.values.mobile}
+
+
                                         />
+                                    </div>
+                                    <div className="error mt-2 mb-2" style={{ textAlign: "right" }}>
+                                        {formik.touched.mobile && formik.errors.mobile}
                                     </div>
                                     <div className="form-group">
                                         <label for="address">Address</label>
@@ -106,6 +134,9 @@ export default function Singup() {
                                             onChange={formik.handleChange("address")}
                                             value={formik.values.address}
                                         />
+                                    </div>
+                                    <div className="error mt-2 mb-2" style={{ textAlign: "right" }}>
+                                        {formik.touched.address && formik.errors.address}
                                     </div>
 
                                     <div className="form-group">
@@ -115,10 +146,13 @@ export default function Singup() {
                                             value={formik.values.password}
                                         />
                                     </div>
+                                    <div className="error mt-2 mb-2" style={{ textAlign: "right" }}>
+                                        {formik.touched.password && formik.errors.password}
+                                    </div>
 
 
                                     <button type="submit" className="btn btn-primary mr-2">Submit</button>
-                                    <button className="btn btn-light">Cancel</button>
+                                    <Link style={{ textDecoration: "none" }} href="/login">  <button className="btn btn-light" >Cancel</button></Link>
                                 </form>
                             </div>
                         </div>

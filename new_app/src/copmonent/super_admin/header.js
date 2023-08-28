@@ -59,16 +59,16 @@ export default function Header() {
                 <a className="navbar-brand brand-logo mr-5" href="/list-admin">
                     {/* <img src="images/logo.svg" className="mr-2" alt="logo" /> */}
                     <Image
-                        src="/images/logo.svg"
+                        src="/images/logo.png"
                         width={500}
                         height={500}
                         alt="logo"
                     />
                 </a>
-                <a className="navbar-brand brand-logo-mini" href="index.html">
+                <a className="navbar-brand brand-logo-mini" href="/list-admin">
                     {/* <img src="images/logo-mini.svg" alt="logo" /> */}
                     <Image
-                        src="/images/logo-mini.svg"
+                        src="/images/logo-mini.png"
                         width={500}
                         height={500}
                         alt="logo"

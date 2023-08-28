@@ -134,6 +134,7 @@ const updatedUser = asyncHandler(async (req, res) => {
                 mobile: req?.body?.mobile,
                 organization: req?.body?.organization,
                 password: req?.body?.password,
+                isSubscribed: req?.body?.isSubscribed,
             },
             {
                 new: true,

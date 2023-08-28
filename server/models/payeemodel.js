@@ -26,6 +26,10 @@ const payeeSchema = new mongoose.Schema(
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User',
             required: true,
+        },
+        event_type: {
+            type: String,
+            required: true,
         }
     },
     {

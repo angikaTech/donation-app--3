@@ -15,6 +15,7 @@ import { getPayee } from '@/features/paymenttable/paymenttableSlice'
 import { base_url } from '@/utils/base_url'
 import { totalamount1 } from '@/features/totalamount/totalamountSlice'
 import moment from 'moment/moment'
+import Link from 'next/link'
 
 export default function Profile() {
 
@@ -85,7 +86,7 @@ export default function Profile() {
                                             <div className=" mt-auto" >
                                                 {/* <img src="http://localhost:5000/api/images/logo.jpeg" alt="people" */}
                                                 <img src={base_url + "images/" + profilestate.document} alt="people"
-                                                    // profilestate
+
                                                     style={{ borderRadius: "50%", height: "200px", width: "200px", overflow: "hidden", display: "flex", justifyContent: "center", alignItems: "center" }}
                                                 />
                                             </div>
@@ -149,6 +150,8 @@ export default function Profile() {
                                                             </tr>
                                                         </thead>
                                                         {paymentstate.slice(0, 3).map((value, key) => {
+
+                                                            const id = value._id;
                                                             return (
 
 
@@ -164,7 +167,21 @@ export default function Profile() {
 
                                                                             {moment(value.createdAt).format('DD-MM-YYYY')}
                                                                         </td>
-                                                                        < td className="font-weight-medium"><div className="badge badge-success">Download</div></td>
+                                                                        {/* < td className="font-weight-medium"><div className="badge badge-success">Download</div></td> */}
+                                                                        <td className="font-weight-medium">
+
+                                                                            <Link legacyBehavior
+                                                                                href={{
+                                                                                    pathname: `print-reciept/[id]`,
+                                                                                    query: { id: id },
+                                                                                }}
+                                                                            >
+                                                                                <div className="badge badge-success">
+                                                                                    Download
+                                                                                </div>
+                                                                            </Link>
+                                                                        </td>
+
                                                                         {/* {value.payment_status === "pending" ?
                                                                             < td className="font-weight-medium"><div className="badge badge-warning">{value.payment_status}</div></td>
                                                                             : value.payment_status === "success" ?

@@ -12,8 +12,9 @@ const createPayee = asyncHandler(async (req, res) => {
         const id = req.params.id;
         validateMongoDbId(id)
         const payment_status = "success"
-        const { name, mobile, payment_mode, amount } = req.body;
-        const newPayee = await Payee.create({ name, mobile, payment_mode, amount, payment_status, createdby: id });
+        const { name, mobile, payment_mode, amount, event_type } = req.body;
+        console.log()
+        const newPayee = await Payee.create({ name, mobile, payment_mode, amount, payment_status, event_type, createdby: id });
         res.json(newPayee);
 
     } catch (error) {
@@ -82,7 +83,7 @@ const totalAmount = asyncHandler(async (req, res) => {
             return sum;
         }
 
-        console.log(amountarr, sum(amountarr))
+        // console.log(amountarr, sum(amountarr))
         res.json(sum(amountarr));
 
     } catch (error) {

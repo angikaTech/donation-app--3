@@ -25,7 +25,7 @@ export default function App({ Component, pageProps }) {
     <Head>
       <meta charset="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-      <title>Skydash Admin</title>
+      <title>Easy Receipt</title>
 
 
       {/* <script src="/vendors/js/vendor.bundle.base.js" ></script >

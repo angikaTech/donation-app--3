@@ -58,7 +58,7 @@ export default function Singup() {
     return (<>
         <ToastContainer />
         <div style={{ backgroundColor: "#210070" }}>
-            <Header1 />
+            {/* <Header1 /> */}
 
         </div>
 

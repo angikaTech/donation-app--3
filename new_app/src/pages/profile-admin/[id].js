@@ -41,13 +41,13 @@ export default function SuperAdminProfile() {
 
     return (
         <>
-            <Head>
+            {/* <Head>
                 <meta charset="utf-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
                 <title>Skydash Admin</title>
-                {/* <script src="/js/template.js"></script> */}
+              
 
-            </Head>
+            </Head> */}
             <main>
                 <div className="container-scroller">
                     <Header />

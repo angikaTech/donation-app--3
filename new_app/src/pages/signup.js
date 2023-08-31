@@ -8,6 +8,7 @@ import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from "next/router";
 import Link from "next/link";
+import authSlice from "@/features/auth/authSlice";
 
 export default function Singup() {
     const router = useRouter();
@@ -36,6 +37,7 @@ export default function Singup() {
 
             dispach(register(values))
             // alert(JSON.stringify(values, null, 2));
+            dispach(authSlice());
 
 
         },
@@ -44,27 +46,46 @@ export default function Singup() {
         (state) => state.register
 
     );
+    const { user } = useSelector(
+        (state) => state.auth
+    );
 
     useEffect(() => {
         if (isError === true) {
             toast.error(message)
         } else if (isSuccess === true) {
             toast.success("User created successfuly ");
+            const delay = 5000;
+            const delayTimeout = setTimeout(() => {
+                router.push('/login'); // Navigate to the login page after the delay
+            }, delay);
+
+            // Clean up the timeout if the component unmounts or dependencies change
+            return () => clearTimeout(delayTimeout);
         }
     }, [isError, isSuccess]);
+    useEffect(() => {
+        if (user) {
+            if (user || isSuccess) {
+                router.push('/')
+            } else {
+                router.push('')
+            }
+        }
+    }, [isLoading, user])
 
 
 
     return (<>
         <ToastContainer />
         <div style={{ backgroundColor: "#210070" }}>
-            {/* <Header1 /> */}
+
 
         </div>
 
         <main>
 
-            {/* <ToastContainer /> */}
+
             <div className="content-wrapper">
                 <div className="row">
                     <div className="col-md-3"></div>

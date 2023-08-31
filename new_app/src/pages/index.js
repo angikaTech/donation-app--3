@@ -2,7 +2,7 @@
 
 
 import { useRouter } from 'next/router'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Logout from '@/copmonent/logout'
 import { config } from '@/utils/axiosconfig'
 import Footer from '@/copmonent/user/footer'
@@ -27,6 +27,14 @@ export default function Home() {
 
   const authstate = useSelector((state) => state.auth);
   const profile1 = useSelector((state) => state.profile.profile)
+
+
+  // const [selectedImage, setSelectedImage] = useState(null);
+
+  // const handleImageChange = (event) => {
+  //   const selectedValue = event.target.value;
+  //   setSelectedImage(selectedValue);
+  // };
 
   return (
 

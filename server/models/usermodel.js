@@ -27,7 +27,7 @@ var userSchema = new mongoose.Schema(
         address: {
             type: String,
             required: true,
-            unique: true,
+            // unique: true,
         },
         password: {
             type: String,

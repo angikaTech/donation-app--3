@@ -31483,6 +31483,7 @@ dl li {
 .table td .badge,
 .jsgrid .jsgrid-table td .badge {
   margin-bottom: 0;
+  cursor: pointer;
 }
 
 .table.table-borderless,
@@ -49076,8 +49077,33 @@ div.tagsinput span.tag a {
   margin-bottom: 0px !important;
 }
 
-.id-background {
+.background {
+  background-image: url("/images/RECIEPT.jpg");
+  background-repeat: no-repeat;
+  background-size: 1019px 435px;
+}
+
+.background1 {
+  background-image: url("/images/RECIEPT.jpg");
+  background-repeat: no-repeat;
+  background-size: 1019px 435px;
+}
+
+
+.background2 {
   background-image: url("/images/RECIEPT1.jpg");
+  background-repeat: no-repeat;
+  background-size: 1019px 435px;
+}
+
+.background3 {
+  background-image: url("/images/RECIEPT2.jpg");
+  background-repeat: no-repeat;
+  background-size: 1019px 435px;
+}
+
+.background4 {
+  background-image: url("/images/RECIEPT3.jpg");
   background-repeat: no-repeat;
   background-size: 1019px 435px;
 }
@@ -49092,7 +49118,7 @@ div.tagsinput span.tag a {
   text-align: left;
     padding-top: 51px;
     font-size: 2rem;
-    color: #897e3d;
+    color: #f1be09;
     font-weight: 800;
     text-shadow: 3px 3px 3px #8b7d78;
     position: absolute;
@@ -49109,13 +49135,14 @@ div.tagsinput span.tag a {
 .org-date{
   padding-top: 156px;
   font-size: 0.8rem;
+  color: white;
 }
 
 .member-name {
   text-align: center;
   padding-top: 24px;
   font-size: 1.4rem;
-  color: #450005;
+  color: white;
   text-shadow: 1px 1px 2px #450005;
 }
 
@@ -49123,14 +49150,14 @@ div.tagsinput span.tag a {
   text-align: center;
   padding-top: none;
   font-size: 1.4rem;
-  color: #450005;
+  color: white;
   text-shadow: 1px 1px 2px #450005;
 }
 
 .event-type{
   text-align: left;
-  color: #ea1f26;
-  font-size: 1.4em;
+  color: white;
+  font-size: 1.3em;
   text-decoration: underline;
   font-weight: 900;
   font-style: italic;
@@ -49163,9 +49190,34 @@ div.tagsinput span.tag a {
     margin-top: 0px !important;
     margin-bottom: 0px !important;
   }
+
+
+  .background {
+    background-image: url("/images/RECIEPT.jpg");
+    background-repeat: no-repeat;
+    background-size: 350px 450px;
+  }
   
-  .id-background {
+  .background1 {
+    background-image: url("/images/RECIEPT.jpg");
+    background-repeat: no-repeat;
+    background-size: 350px 450px;
+  }
+
+  .background2 {
     background-image: url("/images/RECIEPT1.jpg");
+    background-repeat: no-repeat;
+    background-size: 350px 450px;
+  }
+
+  .background3 {
+    background-image: url("/images/RECIEPT2.jpg");
+    background-repeat: no-repeat;
+    
+  }
+
+  .background4 {
+    background-image: url("/images/RECIEPT3.jpg");
     background-repeat: no-repeat;
     background-size: 350px 450px;
   }
@@ -49181,7 +49233,7 @@ div.tagsinput span.tag a {
     text-align: left;
       padding-top: 38px;
       font-size: 1rem;
-      color: #897e3d;
+      color: #f1be09;
       font-weight: 800;
       text-shadow: 3px 3px 3px #8b7d78;
       position: absolute;
@@ -49198,6 +49250,7 @@ div.tagsinput span.tag a {
   .org-date{
     padding-top: 164px;
     font-size: 0.8rem;
+    color: white;
   }
   
   .member-name {
@@ -49205,7 +49258,7 @@ div.tagsinput span.tag a {
     padding-top: 31px;
     font-size: 1rem;
     padding-left: 40px;
-    color: #450005;
+    color: white;
     text-shadow: 1px 1px 2px #450005;
   }
   
@@ -49213,14 +49266,14 @@ div.tagsinput span.tag a {
     text-align: center;
     padding-top: none;
     font-size: 1.4rem;
-    color: #450005;
+    color: white;
     text-shadow: 1px 1px 2px #450005;
   }
   
   .event-type{
     text-align: left;
-    color: #ea1f26;
-    font-size: 0.6em;
+    color: white;
+    font-size: 0.8em;
     padding-top: 10px;
     text-decoration: underline;
     font-weight: 900;
@@ -49260,6 +49313,17 @@ div.tagsinput span.tag a {
 
 
 
-
+.highlight{
+  background: yellow;
+}
+.bordered{        
+  border: 5px solid #000;
+}
+.padded{
+  padding: 20px;
+}
+.hide{
+  display: none;
+}
 
 

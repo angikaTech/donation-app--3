@@ -5,6 +5,7 @@ import moment from 'moment';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import html2canvas from 'html2canvas'
 
 const RecieptImage = () => {
 
@@ -39,11 +40,89 @@ const RecieptImage = () => {
 
   const date1 = moment(profiles.createdAt).format('DD/MM/YY');
 
+
+
+  const [backgrounded1, setBackgrounded1] = useState(false);
+  const [backgrounded2, setBackgrounded2] = useState(false);
+  const [backgrounded3, setBackgrounded3] = useState(false);
+  const [backgrounded4, setBackgrounded4] = useState(false);
+
+
+  const handleBg1Click = () => {
+    setBackgrounded1(!backgrounded1);
+  };
+
+
+  const handleBg2Click = () => {
+    setBackgrounded2(true);
+  };
+
+  const handleRemoveBg2Click = () => {
+    setBackgrounded2(false);
+  };
+
+
+  const handleBg3Click = () => {
+    setBackgrounded3(true);
+  };
+
+  const handleRemoveBg3Click = () => {
+    setBackgrounded3(false);
+  };
+
+
+
+  const handleBg4Click = () => {
+    setBackgrounded4(true);
+  };
+
+
+  const handleRemoveBg4Click = () => {
+    setBackgrounded4(false);
+  };
+
+
+
   return (
     <>
 
-      <div className="container custom-container id-background">
-        <div>
+
+
+
+
+      <div>
+
+        <div className="row" style={{ paddingTop: '10px', paddingBottom: '10px' }}>
+          <div className="col-lg-3 col-sm-12 text-center">
+            <button className="btn btn-secondary" type="button" onClick={() => { handleBg1Click(); handleRemoveBg2Click(); handleRemoveBg3Click(); handleRemoveBg4Click(); }} data-html2canvas-ignore="true">
+              Default
+            </button>
+          </div>
+          <div className="col-lg-3 col-sm-12 text-center">
+            <button className="btn btn-success" type="button" onClick={() => { handleBg2Click(); handleRemoveBg3Click(); handleRemoveBg4Click(); }} data-html2canvas-ignore="true">
+              Ganesh Chaturthi
+            </button>
+          </div>
+          <div className="col-lg-3 col-sm-12 text-center">
+            <button className="btn btn-warning" type="button" onClick={() => { handleBg3Click(); handleRemoveBg4Click(); }} data-html2canvas-ignore="true">
+              Durga Puja
+            </button>
+          </div>
+          <div className="col-lg-3 col-sm-12 text-center">
+            <button className="btn btn-info" type="button" onClick={() => { handleBg4Click(); }} data-html2canvas-ignore="true">
+              Deepavali
+            </button>
+          </div>
+        </div>
+      </div>
+
+
+      <div id="content" className={`${backgrounded1 ? 'background1 ' : ''
+        }${backgrounded2 ? 'background2 ' : ''
+        } ${backgrounded3 ? 'background3 ' : ''
+        }${backgrounded4 ? 'background4 ' : ''
+        }container custom-container img-fluid background `} >
+        <div >
           <div class="container">
             <div class="row">
 
